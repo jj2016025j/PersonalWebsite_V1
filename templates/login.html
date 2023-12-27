@@ -12,7 +12,7 @@
 <body>
     <main class="d-flex justify-content-center align-content-center" style="width: 100%; min-height: 100vh;">
         <div class="container-lg mt-5 pt-5 mb-5 pb-5 mx-auto border login"
-            style="max-width: 450px; max-height: 450px; padding: 48px 40px 36px;">
+            style="max-width: 450px; max-height: 500px; padding: 48px 40px 36px;">
             <h1 class="mt-2 mb-5 text-center">登入</h1>
             <form method="post" id="loginForm">
                 <input type="hidden" name="action" value="login">
@@ -31,6 +31,7 @@
                 </div>
                 <button type="submit" class="container-fluid btn btn-success mt-3">登入</button>
                 <a href="signup.html" class="container-fluid btn btn-success mt-3">前往註冊</a>
+                <a href="portfolio.html" class="container-fluid btn btn-success mt-3">返回個人資訊頁面</a>
             </form>
         </div>
     </main>
@@ -82,7 +83,7 @@
             } else {
                 localStorage.removeItem('rememberedUser');
             }
-            
+
             // 设置 currentUser
             localStorage.setItem('currentUser', username);
 

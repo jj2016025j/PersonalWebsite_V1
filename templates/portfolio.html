@@ -15,8 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;900&family=Open+Sans:ital,wght@1,700&display=swap"
         rel="stylesheet">
     <!-- 引入手刻 -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../static/css/global.css">
 </head>
 
 <body class="text-white bg-black">
@@ -45,55 +44,10 @@
         </div>
     </main>
 
-
     <!-- 頁尾 -->
     <footer class="footer">
     </footer>
-
-    <script src="../static/js/openai.js">
-
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            if (!document.getElementById('UserInformation'))
-                return
-            update()
-            document.getElementById('logout')?.addEventListener('click', function (event) {
-                const currentUser = localStorage.removeItem('currentUser');
-                update()
-            })
-        });
-        function update() {
-            // 从 localStorage 获取当前用户
-            const currentUser = localStorage.getItem('currentUser');
-            // 从 localStorage 获取所有用户数据
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            // 查找当前用户的详细信息
-            const userDetails = users.find(user => user.username === currentUser);
-            let UserInformation = document.getElementById('UserInformation')
-            // 更新页面内容
-            if (userDetails) {
-                // 如果找到用户数据，则显示用户信息
-                UserInformation.innerHTML = `
-                    <p id="username">${userDetails.username}</p>
-                    <p id="email" class="mt-2">信箱: ${userDetails.email || '無'}</p>
-                    <p id="currency">魔法幣: ${userDetails.currency || '0'}</p>
-                    <a href="" id="logout">登出</a>
-                `;
-            } else {
-                // 如果没有找到用户数据，则显示“尚未登录”信息
-                UserInformation.innerHTML = `
-                    <h3 class="mt-5">尚未登入</h3>
-                    <a href="login.html" class="mt-2 mb-5 btn btn-primary">去登入</a>
-                `;
-            }
-        }
-
-
-    </script>
-    <script src="../javascript/joinHeaderFooter.js"></script>
-    <script src="../javascript/data.js"></script>
+    <script type="module" src="../static/javaScript/main.js"></script>
     <!-- 引入Bootstrap JavaScript（可選） -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
