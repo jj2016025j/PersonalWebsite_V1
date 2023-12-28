@@ -55,10 +55,37 @@ function getCategoryBestSellers(products) {
     return Array.from(categoryBestSellers, ([category, { image, sales }]) => ({ category, image, sales }));
 }
 
-// 选择前20个商品
+// list中选择前X个商品
 function selectRandomProducts(products, maxCount) {
     const shuffledProducts = [...products].sort(() => 0.5 - Math.random()); // 打乱数组
     return shuffledProducts.slice(0, maxCount);
 }
 
-export {findJson, createHotProductList, getCategoryBestSellers, selectRandomProducts}
+function getCategoriesList(jsonData) {
+    let parentCategories = [];
+
+    for (let category in jsonData.category) {
+        parentCategories.push(category);
+    }
+
+    return parentCategories;
+}
+function getAllSubcategories(jsonData) {
+    let subCategories = [];
+    for (let category in jsonData.category) {
+        subCategories = subCategories.concat(Object.keys(jsonData.category[category]));
+    }
+    return subCategories;
+}
+function getSubcategories(parentCategory) {
+    if (jsonData.category[parentCategory]) {
+        return Object.keys(jsonData.category[parentCategory]);
+    } else {
+        return [];
+    }
+}
+
+export {
+    findJson, createHotProductList, getCategoryBestSellers, selectRandomProducts,
+    getCategoriesList, getAllSubcategories, getSubcategories
+}
