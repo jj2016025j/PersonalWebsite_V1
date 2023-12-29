@@ -5,7 +5,7 @@ function createUI() {
     createFooter()
 }
 
-//addEventListener
+//addEventListener 這個不知道該放哪裡
 function initializeEventListeners() {
     //幫產品加上送出資料的功能
     const hotProductList = document.getElementById('hot-product-display');
@@ -82,15 +82,11 @@ function generateHtmlContent(type, item) {
             `;
         case 'category':
             return `
-                <div class="classification-option category" id="category">
-                    ${item}
-                </div>
+                <div class="classification-option category" id="category">${item}</div>
             `;
         case 'sub-category':
             return `
-                <div class="classification-option sub-category" id="sub-category">
-                    ${item}
-                </div>
+                <div class="classification-option sub-category" id="sub-category">${item}</div>
             `;
         case 'userInfo':
             if (item) {
