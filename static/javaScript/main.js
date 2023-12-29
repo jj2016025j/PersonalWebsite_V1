@@ -66,7 +66,7 @@ function InitializationUI(ProductInfo, Classification, salesRecord) {
 
 //更新子分類+ UNDO 這裡有錯
 function updateSubcategories(parentCategory) {
-    let Categories = getSubcategories(ProductInfo, parentCategory);
+    let Categories = getSubcategories(Classification, parentCategory);
     updateList("sub-classification-list", Categories, 'sub-category');
 
     // 為生成的子分類添加點擊事件監聽器
