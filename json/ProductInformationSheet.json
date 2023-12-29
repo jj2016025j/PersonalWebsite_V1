@@ -1,10 +1,10 @@
 {
     "products": [
         {
-            "id": "product007",
+            "id": "PRD1007",
             "name": "魔法糖果",
             "description": "色彩繽紛的魔法糖果，帶來奇妙的味蕾體驗。",
-            "image": "https://picsum.photos/200/300?random=7",
+            "image": ["https://picsum.photos/200/300?random=7"],
             "price": 100,
             "reviews": [
                 {
@@ -18,61 +18,10 @@
             "size": "包裝尺寸：10cm x 10cm x 5cm"
         },
         {
-            "id": "product008",
-            "name": "奇幻桌遊",
-            "description": "以奇幻主題為基礎的互動桌遊，適合與家人和朋友一起享受。",
-            "image": "https://picsum.photos/200/300?random=8",
-            "price": 500,
-            "reviews": [
-                {
-                    "userID": "user601",
-                    "username": "boardgame_enthusiast",
-                    "content": "這款桌遊太有趣了，完美的家庭遊戲夜選擇！",
-                    "rating": 4
-                }
-            ],
-            "productIntroduction": "奇幻桌遊結合策略和角色扮演元素，為玩家帶來豐富的奇幻冒險。",
-            "size": "盒子尺寸：30cm x 30cm x 10cm"
-        },
-        {
-            "id": "product009",
-            "name": "奇幻風格床上用品",
-            "description": "舒適柔軟，帶有奇幻風格圖案的床上用品。",
-            "image": "https://picsum.photos/200/300?random=9",
-            "price": 800,
-            "reviews": [
-                {
-                    "userID": "user702",
-                    "username": "dreamy_sleep",
-                    "content": "這床上用品質量很好，奇幻圖案讓我的房間更有趣！",
-                    "rating": 4
-                }
-            ],
-            "productIntroduction": "奇幻風格床上用品採用高品質材料，確保舒適的睡眠體驗。",
-            "size": "雙人床尺寸"
-        },
-        {
-            "id": "product004",
-            "name": "奇幻風景插畫",
-            "description": "展示奇幻世界風景的精美插畫。",
-            "image": "https://picsum.photos/200/300?random=4",
-            "price": 1500,
-            "reviews": [
-                {
-                    "userID": "user201",
-                    "username": "art_fanatic",
-                    "content": "這幅插畫太美了，完美捕捉了奇幻世界的精髓！",
-                    "rating": 5
-                }
-            ],
-            "productIntroduction": "每幅奇幻風景插畫都是獨一無二的藝術作品，為您的空間帶來奇幻氛圍。",
-            "size": "尺寸：50cm x 70cm"
-        },
-        {
-            "id": "product005",
-            "name": "模擬魔杖",
-            "description": "精緻的模擬魔杖，適合用於角色扮演和裝飾。",
-            "image": "https://picsum.photos/200/300?random=5",
+            "id": "PRD1005",
+            "name": "基礎魔杖",
+            "description": "精緻的基礎魔杖，適合用於角色扮演和裝飾。",
+            "image": ["https://picsum.photos/200/300?random=5"],
             "price": 800,
             "reviews": [
                 {
@@ -86,10 +35,10 @@
             "size": "長度：35cm"
         },
         {
-            "id": "product006",
+            "id": "PRD1006",
             "name": "龍形收藏模型",
             "description": "精緻的龍形收藏模型，展示奇幻生物的雄偉形態。",
-            "image": "https://picsum.photos/200/300?random=6",
+            "image": ["https://picsum.photos/200/300?random=6"],
             "price": 2500,
             "reviews": [
                 {
@@ -103,10 +52,10 @@
             "size": "尺寸：60cm x 30cm x 45cm"
         },
         {
-            "id": "product017",
+            "id": "PRD1017",
             "name": "多維空間儲物裝置",
             "description": "具有擴展內部空間的先進儲存裝置。",
-            "image": "https://picsum.photos/200/300?random=17",
+            "image": ["https://picsum.photos/200/300?random=17"],
             "price": 5000,
             "reviews": [
                 {
@@ -120,10 +69,10 @@
             "size": "尺寸：20cm x 20cm x 20cm"
         },
         {
-            "id": "product018",
+            "id": "PRD1018",
             "name": "瞬移裝置",
             "description": "允許使用者瞬間移動至短距離內的創新裝置。",
-            "image": "https://picsum.photos/200/300?random=18",
+            "image": ["https://picsum.photos/200/300?random=18"],
             "price": 8000,
             "reviews": [
                 {
@@ -137,10 +86,10 @@
             "size": "攜帶型，尺寸：10cm x 10cm x 5cm"
         },
         {
-            "id": "product019",
+            "id": "PRD1019",
             "name": "遙控幻影投影機",
             "description": "創造逼真全息影像的裝置，適用於娛樂或教育。",
-            "image": "https://picsum.photos/200/300?random=19",
+            "image": ["https://picsum.photos/200/300?random=19"],
             "price": 3000,
             "reviews": [
                 {
@@ -154,27 +103,10 @@
             "size": "尺寸：30cm x 25cm x 25cm"
         },
         {
-            "id": "product020",
-            "name": "虛擬實境魔法學院",
-            "description": "提供虛擬實境魔法和巫術教學的平台。",
-            "image": "https://picsum.photos/200/300?random=20",
-            "price": 4500,
-            "reviews": [
-                {
-                    "userID": "user1801",
-                    "username": "wizard_apprentice",
-                    "content": "這個虛擬實境魔法學院讓我學到了很多實用的魔法技巧！",
-                    "rating": 4
-                }
-            ],
-            "productIntroduction": "虛擬實境魔法學院帶您進入一個互動式的學習環境，學習各種魔法和巫術技能。",
-            "size": "數位下載"
-        },
-        {
-            "id": "product021",
+            "id": "PRD1021",
             "name": "智慧型魔法護符",
             "description": "透過智能手機應用程序進行設置的護身符。",
-            "image": "https://picsum.photos/200/300?random=21",
+            "image": ["https://picsum.photos/200/300?random=21"],
             "price": 1200,
             "reviews": [
                 {
@@ -188,10 +120,10 @@
             "size": "直徑5cm"
         },
         {
-            "id": "product022",
+            "id": "PRD1022",
             "name": "自適應迷彩裝",
             "description": "根據環境變化顏色的智能服裝。",
-            "image": "https://picsum.photos/200/300?random=22",
+            "image": ["https://picsum.photos/200/300?random=22"],
             "price": 2500,
             "reviews": [
                 {
@@ -205,10 +137,10 @@
             "size": "各種尺寸可選"
         },
         {
-            "id": "product023",
+            "id": "PRD1023",
             "name": "能量水晶充電器",
-            "description": "利用神秘能量水晶為裝置充電。",
-            "image": "https://picsum.photos/200/300?random=23",
+            "description": "利用能量水晶為裝置充電。",
+            "image": ["https://picsum.photos/200/300?random=23"],
             "price": 1800,
             "reviews": [
                 {
@@ -222,10 +154,10 @@
             "size": "尺寸：15cm x 15cm x 10cm"
         },
         {
-            "id": "product024",
+            "id": "PRD1024",
             "name": "智能魔法飾品",
             "description": "可與智慧家居系統同步，執行簡單任務的裝飾品。",
-            "image": "https://picsum.photos/200/300?random=24",
+            "image": ["https://picsum.photos/200/300?random=24"],
             "price": 2200,
             "reviews": [
                 {
@@ -239,170 +171,170 @@
             "size": "各種尺寸可選"
         },
         {
-            "id": "magic001",
+            "id": "PRD4001",
             "name": "擬態魔法 - 变形术",
             "description": "使使用者或物体变换形态或外观的魔法。",
-            "image": "https://picsum.photos/200/300?random=1",
+            "image": ["https://picsum.photos/200/300?random=1"],
             "price": 2500,
             "reviews": [],
             "productIntroduction": "擬態魔法 - 变形术让您能够快速改变自己或物体的外观，实现身份伪装或装饰效果。",
             "size": "适用于各种尺寸"
         },
         {
-            "id": "magic002",
+            "id": "PRD4002",
             "name": "擬態魔法 - 隐形术",
             "description": "使使用者或物体变得看不见的魔法。",
-            "image": "https://picsum.photos/200/300?random=2",
+            "image": ["https://picsum.photos/200/300?random=2"],
             "price": 1800,
             "reviews": [],
             "productIntroduction": "擬態魔法 - 隐形术让您能够在需要时消失不见，保持隐蔽和安全。",
             "size": "适用于个人和物品"
         },
         {
-            "id": "magic003",
+            "id": "PRD4010",
             "name": "元素魔法 - 火元素",
             "description": "包括爆炎術和火球術等火属性魔法。",
-            "image": "https://picsum.photos/200/300?random=3",
+            "image": ["../img/fire01.jpg"],
             "price": 2800,
-            "reviews": [],
+            "reviews": ["../img/fire02.jpg","../img/fire03.jpg"],
             "productIntroduction": "元素魔法 - 火元素让您掌握强大的火焰力量，可用于多种目的，如攻击和照明。",
             "size": "适用于火元素控制者"
         },
         {
-            "id": "magic004",
+            "id": "PRD4011",
             "name": "元素魔法 - 水元素",
             "description": "包括凝水術和水箭術等水属性魔法。",
-            "image": "https://picsum.photos/200/300?random=4",
+            "image": ["https://picsum.photos/200/300?random=4"],
             "price": 2600,
             "reviews": [],
             "productIntroduction": "元素魔法 - 水元素让您掌握水的力量，用于操控水流或攻击敌人。",
             "size": "适用于水元素控制者"
         },
         {
-            "id": "magic005",
+            "id": "PRD4012",
             "name": "元素魔法 - 雷元素",
             "description": "包括电击術和金属磁化術等雷属性魔法。",
-            "image": "https://picsum.photos/200/300?random=5",
+            "image": ["https://picsum.photos/200/300?random=5"],
             "price": 2700,
             "reviews": [],
             "productIntroduction": "元素魔法 - 雷元素让您操控电能，用于攻击或磁化物体。",
             "size": "适用于雷元素控制者"
         },
         {
-            "id": "magic006",
+            "id": "PRD4013",
             "name": "元素魔法 - 地元素",
             "description": "包括土牆術和尖刺術等地属性魔法。",
-            "image": "https://picsum.photos/200/300?random=6",
+            "image": ["https://picsum.photos/200/300?random=6"],
             "price": 2500,
             "reviews": [],
             "productIntroduction": "元素魔法 - 地元素让您掌握大地之力，用于防御或攻击。",
             "size": "适用于地元素控制者"
         },
         {
-            "id": "magic007",
-            "name": "治癒與防禦魔法 - 治癒術",
+            "id": "PRD4020",
+            "name": "治癒術",
             "description": "用于治疗伤口和疾病的魔法。",
-            "image": "https://picsum.photos/200/300?random=7",
+            "image": ["https://picsum.photos/200/300?random=7"],
             "price": 1500,
             "reviews": [],
-            "productIntroduction": "治癒與防禦魔法 - 治癒術能够迅速恢复受伤者的健康。",
+            "productIntroduction": "治癒術能够迅速恢复受伤者的健康。",
             "size": "适用于医疗需求"
         },
         {
-            "id": "magic008",
-            "name": "治癒與防禦魔法 - 防禦魔法",
+            "id": "PRD4021",
+            "name": "防禦魔法",
             "description": "生成保护罩或屏障，抵御攻击的魔法。",
-            "image": "https://picsum.photos/200/300?random=8",
+            "image": ["https://picsum.photos/200/300?random=8"],
             "price": 2000,
             "reviews": [],
-            "productIntroduction": "治癒與防禦魔法 - 防禦魔法可以提供强大的防护，保护您免受敌人的伤害。",
+            "productIntroduction": "防禦魔法可以提供强大的防护，保护您免受敌人的伤害。",
             "size": "适用于自我防御"
         },
         {
-            "id": "magic009",
+            "id": "PRD4030",
             "name": "契約魔法 - 召喚魔法精靈",
             "description": "与特定属性的精灵建立契约的魔法。",
-            "image": "https://picsum.photos/200/300?random=9",
+            "image": ["https://picsum.photos/200/300?random=9"],
             "price": 3000,
             "reviews": [],
             "productIntroduction": "契約魔法 - 召喚魔法精靈可以获得强大的魔法助力。",
             "size": "适用于魔法师"
         },
         {
-            "id": "magic010",
+            "id": "PRD4031",
             "name": "契約魔法 - 魔物契約",
             "description": "与魔物建立联系，共享感知能力的魔法。",
-            "image": "https://picsum.photos/200/300?random=10",
+            "image": ["https://picsum.photos/200/300?random=10"],
             "price": 3200,
             "reviews": [],
             "productIntroduction": "契約魔法 - 魔物契約让您能够与神秘的魔物建立联系，分享它们的感知能力。",
             "size": "适用于冒险者"
         },
         {
-            "id": "magic011",
-            "name": "幻覺與塑形魔法 - 幻覺魔法",
+            "id": "PRD4040",
+            "name": "幻覺魔法",
             "description": "在短时间内妨碍目标感知的魔法。",
-            "image": "https://picsum.photos/200/300?random=11",
+            "image": ["https://picsum.photos/200/300?random=11"],
             "price": 1800,
             "reviews": [],
-            "productIntroduction": "幻覺與塑形魔法 - 幻覺魔法可以使目标产生虚假的感知，迷惑敌人。",
+            "productIntroduction": "幻覺魔法可以使目标产生虚假的感知，迷惑敌人。",
             "size": "适用于战术欺骗"
         },
         {
-            "id": "magic012",
-            "name": "幻覺與塑形魔法 - 塑形魔法",
+            "id": "PRD4041",
+            "name": "塑形魔法",
             "description": "暂时将元素变化为物品外观或改变元素物质的魔法。",
-            "image": "https://picsum.photos/200/300?random=12",
+            "image": ["https://picsum.photos/200/300?random=12"],
             "price": 2100,
             "reviews": [],
-            "productIntroduction": "幻覺與塑形魔法 - 塑形魔法可以将元素暂时改变为所需的形态或外观。",
+            "productIntroduction": "塑形魔法可以将元素暂时改变为所需的形态或外观。",
             "size": "适用于创意应用"
         },
         {
-            "id": "magic013",
-            "name": "禁止魔法 - 預知魔法",
+            "id": "PRD4050",
+            "name": "禁忌魔法 - 預知魔法",
             "description": "强大但危险的预知未来的魔法。",
-            "image": "https://picsum.photos/200/300?random=13",
+            "image": ["https://picsum.photos/200/300?random=13"],
             "price": 4000,
             "reviews": [],
             "productIntroduction": "禁止魔法 - 預知魔法能够揭示未来的秘密，但使用需谨慎。",
             "size": "适用于预知者"
         },
         {
-            "id": "magic014",
+            "id": "PRD4051",
             "name": "禁止魔法 - 因果魔法",
             "description": "操控因果关系的危险魔法。",
-            "image": "https://picsum.photos/200/300?random=14",
+            "image": ["https://picsum.photos/200/300?random=14"],
             "price": 4200,
             "reviews": [],
             "productIntroduction": "禁止魔法 - 因果魔法可以改变事件的发展，但可能导致不可预测的后果。",
             "size": "适用于探索者"
         },
         {
-            "id": "magic015",
+            "id": "PRD4052",
             "name": "禁止魔法 - 時間魔法",
             "description": "掌握时间流动的危险魔法。",
-            "image": "https://picsum.photos/200/300?random=15",
+            "image": ["https://picsum.photos/200/300?random=15"],
             "price": 5000,
             "reviews": [],
             "productIntroduction": "禁止魔法 - 時間魔法可以加速或减缓时间，但需要小心使用。",
             "size": "适用于时间掌控者"
         },
         {
-            "id": "magic016",
+            "id": "PRD4053",
             "name": "禁止魔法 - 空間魔法",
             "description": "操控空间的危险魔法。",
-            "image": "https://picsum.photos/200/300?random=16",
+            "image": ["https://picsum.photos/200/300?random=16"],
             "price": 4800,
             "reviews": [],
             "productIntroduction": "禁止魔法 - 空間魔法可以改变空间结构，但可能导致空间混乱。",
             "size": "适用于空间旅行者"
         },
         {
-            "id": "magic017",
+            "id": "PRD4060",
             "name": "特殊魔法 - 自動清潔術",
             "description": "自动清理指定区域或物体的魔法。",
-            "image": "https://picsum.photos/200/300?random=17",
+            "image": ["https://picsum.photos/200/300?random=17"],
             "price": 2200,
             "reviews": [],
             "productIntroduction": "特殊魔法 - 自動清潔術让您无需劳累，轻松保持清洁。",
@@ -412,7 +344,7 @@
             "id": "product123",
             "name": "智能幻影寵物",
             "description": "創造各種虛擬寵物幻影，可以與用戶進行互動的高科技裝置。",
-            "image": "https://picsum.photos/200/300?random=12",
+            "image": ["https://picsum.photos/200/300?random=12"],
             "price": 2000,
             "reviews": [
                 {
@@ -429,7 +361,7 @@
             "id": "product456",
             "name": "機械伴侶動物",
             "description": "能模仿真實動物行為的仿生機器人寵物。",
-            "image": "https://picsum.photos/200/300?random=45",
+            "image": ["https://picsum.photos/200/300?random=45"],
             "price": 3000,
             "reviews": [
                 {
@@ -443,10 +375,10 @@
             "size": "體長約 20 厘米"
         },
         {
-            "id": "product789",
+            "id": "PRD3030",
             "name": "夢境守護者",
             "description": "夜間發光，守護主人夢境的神秘寵物。",
-            "image": "https://picsum.photos/200/300?random=78",
+            "image": ["https://picsum.photos/200/300?random=78"],
             "price": 4000,
             "reviews": [
                 {
@@ -458,125 +390,6 @@
             ],
             "productIntroduction": "夢境守護者可以幫助您驅趕噩夢，讓您擁有一個甜蜜的夢境。",
             "size": "體長約 30 厘米"
-        },
-        {
-            "id": "product010",
-            "name": "特效指甲油",
-            "description": "具有奇幻光彩效果的指甲油，為您的日常造型增添魔法色彩。",
-            "image": "https://picsum.photos/200/300?random=10",
-            "price": 150,
-            "reviews": [
-                {
-                    "userID": "user801",
-                    "username": "nail_artist",
-                    "content": "這指甲油的效果太驚艷了，完美的奇幻色彩！",
-                    "rating": 5
-                }
-            ],
-            "productIntroduction": "這款特效指甲油結合了獨特的顏色和光澤，讓您的指尖閃耀奇幻魅力。",
-            "size": "容量：10ml"
-        },
-        {
-            "id": "product011",
-            "name": "角色扮演活動策劃",
-            "description": "為您量身定制的角色扮演活動，提供完整的策劃和實施方案。",
-            "image": "https://picsum.photos/200/300?random=11",
-            "price": 10000,
-            "reviews": [
-                {
-                    "userID": "user901",
-                    "username": "event_planner",
-                    "content": "這次角色扮演活動策劃得太完美了，所有參與者都非常享受！",
-                    "rating": 5
-                }
-            ],
-            "productIntroduction": "我們的專業團隊將為您提供一場難忘的角色扮演體驗，從策劃到實施都一絲不苟。",
-            "size": "定制服務"
-        },
-        {
-            "id": "product012",
-            "name": "電子書《奇幻世界探險》",
-            "description": "帶您深入奇幻世界的冒險之旅，充滿刺激與驚奇。",
-            "image": "https://picsum.photos/200/300?random=12",
-            "price": 300,
-            "reviews": [
-                {
-                    "userID": "user1001",
-                    "username": "fantasy_reader",
-                    "content": "這本電子書帶我進入了一個完全不同的奇幻世界，故事情節引人入勝！",
-                    "rating": 4
-                }
-            ],
-            "productIntroduction": "《奇幻世界探險》是一本獨特的電子書，充滿了奇幻元素和扣人心弦的故事。",
-            "size": "電子格式"
-        },
-        {
-            "id": "product013",
-            "name": "奇幻世界桌面壁紙",
-            "description": "美麗的奇幻世界桌面壁紙，為您的電腦帶來魔幻氛圍。",
-            "image": "https://picsum.photos/200/300?random=13",
-            "price": 50,
-            "reviews": [
-                {
-                    "userID": "user1101",
-                    "username": "digital_artist",
-                    "content": "這些壁紙的質量非常高，每一幅都像是藝術品！",
-                    "rating": 5
-                }
-            ],
-            "productIntroduction": "我們精心挑選的奇幻世界桌面壁紙，每一幅都能為您的數位空間帶來魔幻感受。",
-            "size": "數位下載"
-        },
-        {
-            "id": "product014",
-            "name": "奇幻風格燈具",
-            "description": "奇幻風格的燈具，為您的家居增添一抹魔法氣息。",
-            "image": "https://picsum.photos/200/300?random=14",
-            "price": 600,
-            "reviews": [
-                {
-                    "userID": "user1201",
-                    "username": "home_decor_lover",
-                    "content": "這燈具的設計太有創意了，照亮了我的房間同時也照亮了我的心！",
-                    "rating": 4
-                }
-            ],
-            "productIntroduction": "這款奇幻風格燈具結合了優雅的設計與溫暖的燈光，適合任何愛好奇幻的家庭。",
-            "size": "尺寸：40cm x 40cm x 60cm"
-        },
-        {
-            "id": "product015",
-            "name": "幻想果醬",
-            "description": "來自奇幻世界的果醬，每一口都充滿魔法般的滋味。",
-            "image": "https://picsum.photos/200/300?random=15",
-            "price": 120,
-            "reviews": [
-                {
-                    "userID": "user1301",
-                    "username": "gourmet_foodie",
-                    "content": "這幻想果醬的味道獨特迷人，完全超出我的預期！",
-                    "rating": 5
-                }
-            ],
-            "productIntroduction": "幻想果醬採用獨家配方，將奇幻與美味完美融合，為您的早餐增添一份驚喜。",
-            "size": "容量：250g"
-        },
-        {
-            "id": "product016",
-            "name": "奇幻卡牌遊戲",
-            "description": "基於奇幻主題的卡牌遊戲，充滿策略與樂趣。",
-            "image": "https://picsum.photos/200/300?random=16",
-            "price": 350,
-            "reviews": [
-                {
-                    "userID": "user1401",
-                    "username": "card_game_enthusiast",
-                    "content": "這卡牌遊戲深深吸引了我，每次玩都有新的發現！",
-                    "rating": 5
-                }
-            ],
-            "productIntroduction": "奇幻卡牌遊戲結合了創新的遊戲機制和豐富的故事背景，為玩家帶來無窮樂趣。",
-            "size": "包裝尺寸：20cm x 15cm x 5cm"
         }
     ]
 }

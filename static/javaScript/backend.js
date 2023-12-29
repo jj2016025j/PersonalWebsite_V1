@@ -1,29 +1,6 @@
-//取得資料
-function findJson(url) {
-    // 返回 Promise 对象
-    return new Promise((resolve, reject) => {
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(jsonData => {
-                resolve(jsonData); // 解析 Promise，返回 JSON 数据
-            })
-            .catch(error => {
-                console.error('Error fetching JSON:', error);
-                reject(error); // 拒绝 Promise，返回错误
-            });
-    });
-}
-
-
-//列出熱門商品
+//列出熱門商品 要加紀錄
 function createHotProductList(products, salesRecords) {
     let salesMap = {};
-    // 累计每个产品的销售量
     salesRecords.forEach(record => {
         if (salesMap[record.product_name]) {
             salesMap[record.product_name] += record.quantity;
@@ -31,7 +8,6 @@ function createHotProductList(products, salesRecords) {
             salesMap[record.product_name] = record.quantity;
         }
     });
-    // 匹配产品信息并创建热门商品列表
     return products
         .filter(product => salesMap[product.name])
         .map(product => ({
@@ -43,7 +19,7 @@ function createHotProductList(products, salesRecords) {
         }));
 }
 
-//過濾熱門分類
+//過濾熱門分類 目前用不到了
 function getCategoryBestSellers(products) {
     const categoryBestSellers = new Map();
     products.forEach(product => {
@@ -61,31 +37,96 @@ function selectRandomProducts(products, maxCount) {
     return shuffledProducts.slice(0, maxCount);
 }
 
+//列出父分類
 function getCategoriesList(jsonData) {
-    let parentCategories = [];
+    return Object.keys(jsonData.category);
+}
 
-    for (let category in jsonData.category) {
-        parentCategories.push(category);
+function getSubcategories(jsonData, parentCategory = null) {
+    // 確保jsonData和jsonData.category是有效的
+    if (!jsonData || !jsonData.category) {
+        console.error('Invalid jsonData structure');
+        return [];
     }
 
-    return parentCategories;
-}
-function getAllSubcategories(jsonData) {
-    let subCategories = [];
-    for (let category in jsonData.category) {
-        subCategories = subCategories.concat(Object.keys(jsonData.category[category]));
+    if (!parentCategory) {
+        const parentCategories = getCategoriesList(jsonData);
+        if (parentCategories.length > 0) {
+            parentCategory = parentCategories[0];
+        } else {
+            return [];
+        }
     }
-    return subCategories;
-}
-function getSubcategories(parentCategory) {
-    if (jsonData.category[parentCategory]) {
+
+    // 確保父分類存在於jsonData.category中
+    if (jsonData.category.hasOwnProperty(parentCategory)) {
         return Object.keys(jsonData.category[parentCategory]);
     } else {
+        console.warn(`Parent category '${parentCategory}' not found`);
         return [];
     }
 }
 
+//找父類或子類下的所有產品id
+function findProducts(data, parentCategory = null, subCategory = null) {
+    let products = [];
+
+    if (parentCategory === null && subCategory === null) {
+        // 沒有提供任何類別，返回所有產品ID
+        Object.values(data.category).forEach(parent => {
+            Object.values(parent).forEach(subCatProducts => {
+                products = [...products, ...subCatProducts];
+            });
+        });
+    } else if (parentCategory && subCategory === null) {
+        // 僅提供父類別，返回該父類別下所有子類別的產品ID
+        const parent = data.category[parentCategory];
+        if (parent) {
+            Object.values(parent).forEach(subCatProducts => {
+                products = [...products, ...subCatProducts];
+            });
+        }
+    } else if (subCategory) {
+        // 提供了子類別，返回該子類別下的所有產品ID
+        Object.values(data.category).forEach(parent => {
+            if (parent[subCategory]) {
+                products = [...products, ...parent[subCategory]];
+            }
+        });
+    }
+
+    return products;
+}
+
+function findProductsInfo(jsonData, productIds ) {
+    let productsInfo = [];
+
+    jsonData.products.forEach(product => {
+        if (productIds.includes(product.id)) {
+            productsInfo.push(product);
+        }
+    });
+
+    return productsInfo;
+}
+
+async function fetchJson(url) {
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+}
+
+//test
+fetchJson('../json/ProductClassificationTable.json')
+    .then(jsonData => {
+        // console.log(getCategoriesList(jsonData))
+    }).catch(error => {
+        console.error("Error loading data: ", error);
+    });
+
 export {
-    findJson, createHotProductList, getCategoryBestSellers, selectRandomProducts,
-    getCategoriesList, getAllSubcategories, getSubcategories
+    fetchJson, createHotProductList, getCategoryBestSellers, selectRandomProducts,
+    getCategoriesList, getSubcategories, findProducts, findProductsInfo
 }

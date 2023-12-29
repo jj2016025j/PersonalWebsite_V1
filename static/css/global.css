@@ -120,11 +120,6 @@ footer {
     color: white;
 }
 
-footer div {
-    padding: 0 5vh;
-    margin: 0 5vh;
-}
-
 img, .img {
     background-repeat: no-repeat;
     background-size: cover;
@@ -132,7 +127,6 @@ img, .img {
 }
 
 .colorful {
-    margin: 10vh 0;
     animation: colorful linear 1s infinite;
 }
 
@@ -145,14 +139,6 @@ img, .img {
     100% { color: rgb(98, 24, 59); }
 }
 
-.row-gap {
-    row-gap: 20px;
-}
-
-.column-gap {
-    column-gap: 20px;
-}
-
 .p-relative {
     position: relative;
 }
@@ -163,8 +149,4 @@ img, .img {
 
 .z-index-1 {
     z-index: -1;
-}
-
-.margin-0-10vh {
-    margin: 0 10vh;
 }

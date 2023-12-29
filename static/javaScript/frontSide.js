@@ -3,149 +3,120 @@ import { sendMessage } from './openai.js';
 function createUI() {
     createHeader()
     createFooter()
-    createActive()
-    createHotProdut()
-    createAllProduct()
 }
 
 //addEventListener
 function initializeEventListeners() {
-    document.addEventListener('DOMContentLoaded', () => {
-        //更新當前產品資訊
-        const hotProductList = document.getElementById('hot-product-display');
-        const allProductList = document.getElementById('all-product-display');
-        const productList = [hotProductList, allProductList];
-        productList.forEach(element => {
-            element?.addEventListener('click', (event) => {
-                const link = event.target.closest('.product-name');
-                if (!link) return; // 如果点击的不是产品链接，退出
+    //幫產品加上送出資料的功能
+    const hotProductList = document.getElementById('hot-product-display');
+    const allProductList = document.getElementById('all-product-display');
+    const productList = [hotProductList, allProductList];
+    productList.forEach(element => {
+        element?.addEventListener('click', (event) => {
+            const link = event.target.closest('.product-name');
+            if (!link) return; // 如果点击的不是产品链接，退出
 
-                event.preventDefault(); // 阻止链接的默认跳转行为
-                const productName = link.textContent; // 获取产品名称
-                const product = { name: productName }; // 创建一个包含产品信息的对象
-                localStorage.setItem('currentProduct', JSON.stringify(product));
-                window.location.href = 'productInfo.html'; // 跳转到产品信息页面
-            });
-        })
-
-        //更新用戶介面
-        if (document.getElementById('UserInformation')) {
-            updateUserInfo()
-            document.getElementById('logout')?.addEventListener('click', function () {
-                localStorage.removeItem('currentUser');
-                updateUserInfo()
-            })
-        }
-
-        document.getElementById('chatForm')?.addEventListener('submit', function (event) {
-            event.preventDefault();
-            sendMessage(true);
+            event.preventDefault(); // 阻止链接的默认跳转行为
+            const productName = link.textContent; // 获取产品名称
+            const product = { name: productName }; // 创建一个包含产品信息的对象
+            localStorage.setItem('currentProduct', JSON.stringify(product));
+            window.location.href = 'productInfo.html'; // 跳转到产品信息页面
         });
+    })
+
+    //更新用戶介面
+    updateUserInfo()
+
+    //登出
+    document.getElementById('logout')?.addEventListener('click', function () {
+        localStorage.removeItem('currentUser');
+        updateUserInfo()
+    })
+
+    //發送
+    document.getElementById('chatForm')?.addEventListener('submit', function (event) {
+        event.preventDefault();
+        sendMessage(true);
     });
+
 }
 
 //============================================更新區
-//==================活動
-function updateActivityList(data) {
-    const activityList = document.getElementById("activity-list");
-    if (activityList === null) {
-        return;
-    }
-    let activitiesHTML = "";
-    data.activities.forEach(activity => {
-        activitiesHTML += `
-            <div class="product-card d-flex flex-column">
-            <a class="product-name" href="productInfo.html"><div class="img" style="background-image: url(${activity.image});"></div></a>
-            </div>
-        `;
-    });
-    activityList.innerHTML = activitiesHTML;
-}
-
-//====================熱門商品
-function updateHotProductList(topSellingProducts) {
-    const hotProductList = document.getElementById("hot-product-list");
-    if (hotProductList === null) {
-        return;
-    }
-    let hotProductsHTML = "";
-    topSellingProducts.forEach(product => {
-        hotProductsHTML += `
-            <div class="product-card d-flex flex-column">
-                <div class="img" style="background-image: url(${product.image});"></div>
-                <a class="product-name" href="./productInfo.html"><b>${product.name}</b></a>
-                <a class="product-price">$${product.price}</a>
-            </div>
-        `;
-    });
-    hotProductList.innerHTML = hotProductsHTML;
-}// debugModel("===============產出熱門商品結束===============")
-
-//========================商品種類
-function updateClassificationList(products) {
-    const classificationList = document.getElementById("classification-list");
-    if (classificationList === null)
-        return
-    classificationList.innerHTML = "";
-    let htmlContent = "";
-    products.forEach(product => {
-        let categoryElementHtml = `
-            <div class="classification-option" onclick="location.href='productInfo.html'">
-                ${product.category}
-            </div>
-        `;
-        htmlContent += categoryElementHtml;
-    });
-    classificationList.innerHTML = htmlContent;
-}
-
-//========================所有商品
-function updateAllProductList(selectedProducts) {
-    const allProductList = document.getElementById("all-product-list");
-    if (allProductList === null)
-        return;
-    let htmlContent = "";
-    selectedProducts.forEach(product => {
-        let productCardHtml = `
-            <div class="product-card d-flex flex-column">
-                <div class="img" style="background-image: url(${product.image});"></div>
-                <a class="product-name" href="./productInfo.html"><b>${product.name}</b></a>
-                <a class="product-price">$${product.price}</a>
-            </div>
-        `;
-        htmlContent += productCardHtml;
-    });
-    allProductList.innerHTML = htmlContent;
-}
-
-//更新用戶
 function updateUserInfo() {
+    if (!document.getElementById('UserInformation'))
+        return
     const currentUser = localStorage.getItem('currentUser');
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const userDetails = users.find(user => user.username === currentUser);
-    let UserInformation = document.getElementById('UserInformation')
-    if (userDetails) {
-        UserInformation.innerHTML = `
-            <p id="username">${userDetails.username}</p>
-            <p id="email" class="mt-2">信箱: ${userDetails.email || '無'}</p>
-            <p id="currency">魔法幣: ${userDetails.currency || '0'}</p>
-            <a href="" id="logout">登出</a>
-        `;
+
+    updateList('UserInformation', userDetails, 'userInfo');
+}
+
+//========================更新畫面
+function updateList(elementId, items, type) {
+    const element = document.getElementById(elementId);
+
+    if (element === null) return;
+
+    let htmlContent = "";
+    if (Array.isArray(items)) {
+        items.forEach(item => {
+            htmlContent += generateHtmlContent(type, item);
+        });
     } else {
-        UserInformation.innerHTML = `
-            <h3 class="mt-5">尚未登入</h3>
-            <a href="login.html" class="mt-2 mb-5 btn btn-primary">去登入</a>
-        `;
+        htmlContent = generateHtmlContent(type, items);
+    }
+    element.innerHTML = htmlContent;
+}
+
+//========================根據類型回傳
+function generateHtmlContent(type, item) {
+    switch (type) {
+        case 'product':
+            return `
+                <div class="product-card d-flex flex-column">
+                    <div class="img" style="background-image: url(${item.image});"></div>
+                    <a class="product-name" href="./productInfo.html"><b>${item.name}</b></a>
+                    <a class="product-price">$${item.price}</a>
+                </div>
+            `;
+        case 'category':
+            return `
+                <div class="classification-option category" id="category">
+                    ${item}
+                </div>
+            `;
+        case 'sub-category':
+            return `
+                <div class="classification-option sub-category" id="sub-category">
+                    ${item}
+                </div>
+            `;
+        case 'userInfo':
+            if (item) {
+                return `
+                    <p id="username">${item.username}</p>
+                    <p id="email" class="mt-2">信箱: ${item.email || '無'}</p>
+                    <p id="currency">魔法幣: ${item.currency || '0'}</p>
+                    <a href="" id="logout">登出</a>
+                `;
+            } else {
+                return `
+                    <h3 class="mt-5">尚未登入</h3>
+                    <a href="login.html" class="mt-2 mb-5 btn btn-primary">去登入</a>
+                `;
+            }
+        default:
+            return '';
     }
 }
 
 //============================================生成區
-//生成header
 function createHeader() {
     const header = document.querySelector('header')
     if (header) {
         header.innerHTML = `
-        <h1 class="note-sans-black logo">魔法空間</h1>
+        <h1 class="note-sans-black logo">魔法商店</h1>
         <nav class="bg-opacity-50">
             <ul>
                 <li><a href=./index.html>HOME</a></li>
@@ -168,7 +139,6 @@ function createHeader() {
     });
 }
 
-//生成footer
 function createFooter() {
     const footer = document.getElementsByTagName('footer')[0]
     if (footer) {
@@ -230,83 +200,15 @@ function createFooter() {
             </p>
         </div>
         <p>Copyright © 2023 建陞教練的工作室 All Rights Reserved.</p>
+        <a href="https://www.canva.com/design/DAF4PrNLaIc/XBZqJm5EFzzmeLM4V6hkFQ/edit?ui=eyJHIjp7fX0">簡報</a>
+        <a href="https://www.canva.com/design/DAF4PrNLaIc/XBZqJm5EFzzmeLM4V6hkFQ/edit?utm_content=DAF4PrNLaIc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">簡報</a>
+    
     </div>
     `;
     }
 }
 
-//=====================================活動
-function createActive() {
-    const activityDisplay = document.getElementById('Activity-display')
-    if (activityDisplay) {
-        activityDisplay.innerHTML = `
-    <h1 class="note-sans-black colorful" id="Activity-display">當前活動</h1>       
-    <div class="display row Activity-display">
-        <div class="Activity-list col-12 d-flex py-3" id="activity-list">
-            <img class="img" src="../img/e弓箭手22.png" alt="">
-            <img class="img" src="../img/e弓箭手22.png" alt="">
-            <img class="img" src="../img/e弓箭手22.png" alt="">
-        </div>
-    </div>
-    `
-    }
-}
-
-//=====================================熱門商品
-function createHotProdut() {
-    const hotProductDisplay = document.getElementById('hot-product-display')
-    if (hotProductDisplay) {
-        hotProductDisplay.innerHTML = `
-    <h1 class="note-sans-black colorful" id="hot-product-display">熱門商品</h1>       
-    <section class="display row overflow-auto product-list">
-        <div class="product-list col-12 d-flex py-3" id="hot-product-list">
-        </div>
-    </section>
-    `
-    }
-}
-
-//=====================================商品分類
-function createClassification() {
-    const productClassificationDisplay = document.getElementById('hot-classification-display')
-    if (productClassificationDisplay) {
-        productClassificationDisplay.innerHTML = `
-    <h1 class="note-sans-black colorful" id="hot-classification-display">熱門分類</h1>       
-    <section class="display row overflow-auto product-list">
-        <div class="product-list col-12 d-flex py-3" id="product-classification-list">
-            <div class="product-card d-flex flex-direction-column">
-                <div class="img" style="background-image: url(../img/671.png);"></div>
-                <a class="product-name" href="./productInfo.html"><b>Pixel 8</b></a>
-            </div>
-        </div>
-    </section>
-    `
-    }
-}
-
-//=====================================所有產品
-function createAllProduct() {
-    const allProductDisplay = document.getElementById('all-product-display')
-    if (allProductDisplay) {
-        allProductDisplay.innerHTML = `
-    <h1 class="note-sans-black colorful" id="all-product-display">所有商品</h1>
-    <div class="row classification-list" id="classification-list">
-        <div class="classification-option">分類選項</div>
-        <div class="classification-option">魔法</div>
-        <div class="classification-option">科技</div>
-        <div class="classification-option">寵物</div>
-    </div>
-    <section class="display row all-product-list">
-        <div class="row all-product-list col-12 py-3" id="all-product-list">
-        </div>
-    </section>
-    `
-    }
-}
-
 export {
-    createUI, createHeader, createFooter, createActive, createHotProdut,
-    createClassification, createAllProduct, updateActivityList,
-    updateHotProductList, updateClassificationList, updateAllProductList,
-    initializeEventListeners
+    createUI, createHeader, createFooter, updateUserInfo,
+    updateList, initializeEventListeners
 };
