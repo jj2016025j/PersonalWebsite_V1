@@ -3,15 +3,17 @@ console.log("test");
 import {
     fetchJson, selectRandomProducts,
     getCategoriesList, getSubcategories, findProducts, findProductsInfo
-} from 'backend.js';
+} from './backEnd.js';
 import {
     createUI, initializeEventListeners,
     updateUserInfo, updateList, showMessage
-} from 'FrontSide.js';
+} from './frontSide.js';
 
-document.addEventListener('DOMContentLoaded', async() => {
+document.addEventListener('DOMContentLoaded', async () => {
     await Initialization()
     initializeEventListeners()
+    loadRememberedUser();
+
 })
 
 let ProductInfo
@@ -94,10 +96,6 @@ function categoriesAddEventListener(className) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    loadRememberedUser();
-});
-
 document.getElementById("loginForm")?.addEventListener("submit", function (event) {
     event.preventDefault();
     const username = document.getElementById('username').value;
@@ -120,10 +118,10 @@ document.getElementById("registerForm")?.addEventListener("submit", function (ev
 
 function loadRememberedUser() {
     const rememberedUser = JSON.parse(localStorage.getItem('rememberedUser'));
-    if (rememberedUser) {
-        document.getElementById('username')?.value = rememberedUser.username;
-        document.getElementById('password')?.value = rememberedUser.password;
-        document.getElementById('rememberMe')?.checked = rememberedUser.rememberedMe;
+    if (rememberedUser&&document.getElementById('username')&&document.getElementById('password')&&document.getElementById('rememberMe')) {
+        document.getElementById('username').value = rememberedUser.username;
+        document.getElementById('password').value = rememberedUser.password;
+        document.getElementById('rememberMe').checked = rememberedUser.rememberedMe;
     }
 }
 
@@ -162,7 +160,7 @@ function register(username, password) {
         users.push({ username, password });
         localStorage.setItem('users', JSON.stringify(users));
         localStorage.setItem('currentUser', username);
-        window.location.href = 'portfolio.html'; 
+        window.location.href = 'portfolio.html';
         return '註冊完成';
     }
 }

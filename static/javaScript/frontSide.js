@@ -1,4 +1,4 @@
-import { sendMessage } from 'openai.js';
+import { sendMessage } from './openai.js';
 //frontSide.js
 function createUI() {
     createHeader()
