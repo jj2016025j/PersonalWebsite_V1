@@ -35,77 +35,25 @@
                 <a href="portfolio.html" class="container-fluid btn btn-success mt-3">返回個人資訊頁面</a>
             </form>
         </div>
-        <div class="col-md-4 container-md" id="message-container"></div>
+        <div class="col-md-4 container-md" id="message-container">
+            <div id="qrcode"></div>
+        </div>
     </main>
+    <div class="bg-white">
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
+
+    <script type="text/javascript">
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: "https://leejohnson.ddns.net/templates/",
+            width: 128,
+            height: 128
+        });
+    </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // 检查 localStorage 中是否有用户信息
-            const rememberedUser = JSON.parse(localStorage.getItem('rememberedUser'));
-
-            // 如果用户信息不为空，则更新页面内容
-            if (rememberedUser) {
-                document.getElementById('username').value = rememberedUser.username;
-                document.getElementById('password').value = rememberedUser.password;
-                document.getElementById('password').checked = rememberedUser.rememberedMe;
-                console.log(rememberedUser)
-            }
-        });
-
-        document.getElementById("loginForm").addEventListener("submit", function (event) {
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            var rememberMe = document.getElementById('rememberMe').checked;
-            event.preventDefault();
-            console.log(login(username, password, rememberMe))
-            return true;
-        });
-
-        function login(username, password, rememberMe) {
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = users.find(user => user.username === username);
-
-            let form = document.getElementById("form")
-            if (!user) {
-                showMessage('warning', '找不到用戶。');
-                return '無此用戶';
-            }
-            if (user.password !== password) {
-                showMessage('danger', '密碼錯誤。');
-                return '密碼錯誤';
-            }
-            if (rememberMe) {
-                localStorage.setItem('rememberedUser', JSON.stringify({ username, password, rememberMe }));
-            } else {
-                localStorage.removeItem('rememberedUser');
-            }
-
-            localStorage.setItem('currentUser', username);
-            showMessage('success', '您已成功登入。');
-            return '登入成功';
-        }
-
-        function showMessage(type, message) {
-            const messageContainer = document.getElementById('message-container');
-            const messageType = {
-                'success': '成功！',
-                'warning': '警告！',
-                'danger': '錯誤！',
-                'info': '提示！'
-            };
-
-            messageContainer.innerHTML = `<div class="alert alert-${type}"><strong>${messageType[type]}</strong> ${message}</div>`;
-
-            setTimeout(() => {
-                messageContainer.innerHTML = '';
-                setTimeout(() => {
-                    if (type === 'success')
-                        window.location.href = 'portfolio.html';
-                }, 1000);
-            }, 2000);
-
-        }
-
         function checkViewportWidth() {
             const element = document.querySelector('.login');
             if (window.innerWidth < 600) {
@@ -123,27 +71,48 @@
         // 監聽視口大小變化
         window.addEventListener('resize', checkViewportWidth);
 
-        // document.getElementById('loginForm').addEventListener('submit', function (e) {
-        //     e.preventDefault();
+        if (false) {
+            console.clear();
+            console.log(`
+        ██████╗██╗  ██╗    ███╗   ██╗██████╗     ██╗
+        ██╔═══████║  ██║    ████╗  ████╔═══██╗    ██║
+        ██║   █████████║    ██╔██╗ ████║   ██║    ██║
+        ██║   ████╔══██║    ██║╚██╗████║   ██║    ╚═╝
+        ╚██████╔██║  ██║    ██║ ╚████╚██████╔╝    ██╗
+        ╚═════╝╚═╝  ╚═╝    ╚═╝  ╚═══╝╚═════╝     ╚═╝
+            `);
+            console.warn('RRRRヽ(*・ω・)ﾉ 廣告被阻擋了');
+            console.warn('你都能發現這個彩蛋了，求你關閉 Adblock (廣告阻擋器) 支持我 ┭┮﹏┭┮')
+        } else {
+            console.info('你發現了這個毫無意義的彩蛋！但是我非常感謝你關閉 Adblock (廣告阻擋器) ㄟ(≧◇≦)ㄏ');
+            console.info('因為你關閉 Adblock 也代表你支持我 (((o(*ﾟ▽ﾟ*)o)))')
+            console.info('底下我也給你佛祖保佑的圖片，祝你開發順利 (๑•̀ㅂ•́)و✧')
+            console.info(`
+                             _oo0oo_
+                            o8888888o
+                            88" . "88
+                            (| -_- |)
+                            0\  =  /0
+                          ___/'---'\___
+                        .' \||     ||/ '.
+                        / \||||  :  ||||/ |
+                      | _||||| -:- |||||- |
+                      |   | \|\  -  /|/ |   |
+                      | \_|  ''\---/''  |_/ |
+                      |  .-\__  '-'  ___/-. |
+                    ___'. .'  /--.--\  '. .'___
+                ."" '<  '.___\_<|>_/___.' >' "".
+                | | :  '- \'.;'\ _ /';.'/ - ' : | |
+                |  | '_.   \_ __\ /__ _/   .-' |  |
+            ====='-.____'.___ \_____/___.-'___.-'=====
+                              '=---='
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      
+                          佛祖保佑，永無 BUG
+                          薪水增多，財富自由
+            `)
+        }
 
-        //     const username = document.getElementById('email').value;
-        //     const password = document.getElementById('password').value;
-
-        //     fetch('/login', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({ username, password }),
-        //     })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             console.log('Success:', data);
-        //         })
-        //         .catch((error) => {
-        //             console.error('Error:', error);
-        //         });
-        // });
     </script>
 </body>
 

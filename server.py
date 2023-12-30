@@ -19,6 +19,10 @@ def home():
 def not_found_error(error):
     return render_template('404.html'), 404
 
+@app.errorhandler(405)
+def not_found_error(error):
+    return render_template('405.html'), 405
+
 if __name__ == '__main__':
     # if os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
     #     threading.Timer(0, open_browser).start()

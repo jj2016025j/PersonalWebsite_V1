@@ -40,41 +40,6 @@
   <!-- 帳號密碼信箱 Google代碼 -->
   <script>
     // localStorage.clear()
-    document.getElementById("registerForm")?.addEventListener("submit", function (event) {
-      var username = document.getElementById('username').value;
-      var password = document.getElementById('password').value;
-      var confirm_password = document.getElementById('confirm_password').value;
-      if (password != confirm_password) {
-        event.preventDefault();
-        alert('兩次輸入的密碼不相同! Passwords do not match.');
-        return false;
-      }
-      event.preventDefault();
-      console.log(register(username, password))
-      return true;
-    });
-
-    function register(username, password) {
-      // 從 localStorage 獲取用戶數據
-      let users = JSON.parse(localStorage.getItem('users')) || [];
-      // 確保 users 是一個陣列
-      if (!Array.isArray(users)) {
-        users = [];
-      }
-      // 檢查是否已存在相同的用戶名
-      const userExists = users.some(user => user.username === username);
-
-      if (userExists) {
-        // showMessage('info', '該用戶已註冊。');
-        return '已註冊過';
-      } else {
-        users.push({ username: username, password: password });
-        localStorage.setItem('currentUser', username);
-        localStorage.setItem('users', JSON.stringify(users));
-        window.location.href = 'portfolio.html'; 
-        return '註冊完成';
-      }
-    }
   </script>
 </body>
 
