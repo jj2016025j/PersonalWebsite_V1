@@ -58,10 +58,6 @@ html, body {
     overflow-x: hidden;
 }
 
-main {
-    width: 100%;
-}
-
 header {
     height: 60px;
     width: 100%;
@@ -110,16 +106,6 @@ nav a {
     color: white;
 }
 
-article {
-    width: 50%;
-    height: 100%;
-}
-
-footer {
-    background-color: black;
-    color: white;
-}
-
 img, .img {
     background-repeat: no-repeat;
     background-size: cover;
@@ -137,16 +123,4 @@ img, .img {
     60% { color: rgb(25, 100, 100); }
     80% { color: rgb(171, 131, 192); }
     100% { color: rgb(98, 24, 59); }
-}
-
-.p-relative {
-    position: relative;
-}
-
-.p-absolute {
-    position: absolute;
-}
-
-.z-index-1 {
-    z-index: -1;
 }

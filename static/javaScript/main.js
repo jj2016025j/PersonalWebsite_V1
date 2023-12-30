@@ -2,39 +2,44 @@
 import {
     fetchJson, createHotProductList, selectRandomProducts,
     getCategoriesList, getSubcategories, findProducts, findProductsInfo
-} from './backend.js';
+} from 'backend.js';
 import {
     createUI, initializeEventListeners,
     updateUserInfo, updateList
-} from './FrontSide.js';
+} from 'FrontSide.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-    Initialization()
+document.addEventListener('DOMContentLoaded', async() => {
+    await Initialization()
     initializeEventListeners()
 })
 
 let ProductInfo
 let Classification
 let salesRecord
-function Initialization() {
-    //創建基本內容 頭尾 
-    // 讀取json
-    createUI()
+async function Initialization() {
+    document.title = "艾格鲁的店 - 您異世界日常所需的一切";
+    // 创建基本内容 頭尾
+    // 读取json
+    createUI();
     updateUserInfo();
 
-    Promise.all([
-        fetchJson('../json/ProductInformationSheet.json'),
-        fetchJson('../json/ProductClassificationTable.json'),
-        fetchJson('../json/salesRecord.json')
-    ]).then(([ProductInfo2, ProductInfo3, ProductInfo4]) => {
-        ProductInfo = ProductInfo2
-        Classification = ProductInfo3
-        salesRecord = ProductInfo4
-        InitializationUI(ProductInfo, Classification, salesRecord)
-    }).catch(error => {
+    try {
+        // 使用 async/await 等待所有 fetch 请求完成
+        const [ProductInfo2, ProductInfo3, ProductInfo4] = await Promise.all([
+            fetchJson('../json/ProductInformationSheet.json'),
+            fetchJson('../json/ProductClassificationTable.json'),
+            fetchJson('../json/salesRecord.json')
+        ]);
+
+        ProductInfo = ProductInfo2;
+        Classification = ProductInfo3;
+        salesRecord = ProductInfo4;
+        InitializationUI(ProductInfo, Classification, salesRecord);
+    } catch (error) {
         console.error("Error loading ProductInfo: ", error);
-    });
+    }
 }
+
 
 function InitializationUI(ProductInfo, Classification, salesRecord) {
     if (ProductInfo && Classification && salesRecord) {

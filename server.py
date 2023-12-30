@@ -22,4 +22,4 @@ def not_found_error(error):
 if __name__ == '__main__':
     # if os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
     #     threading.Timer(0, open_browser).start()
-    app.run(debug=True)
+    app.run(debug=True,port=5050)

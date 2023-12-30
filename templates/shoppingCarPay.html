@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="../static/css/global.css">
 </head>
 <body>
-    <header>
+    <header id="navbar">
 
     </header>
-    <main class="container-fluid d-flex justify-content-center mt-5 mb-5 pt-5 pb-5">
+    <main class="container row justify-content-center align-content-center mt-5 mb-5 pt-5 pb-5" style="height: 80vh;">
 
         <div class="col-md-6 d-flex justify-content-center mt-5 mb-5 pt-5 pb-5">
             <p>運送地點</p>
@@ -44,7 +44,7 @@
             <div class="row">
                 <p class="col text-left"><b>預估總金額:</b></p> <p class="col text-right" id="summary-total"><b> $20</b></p>
             </div>
-            <a href="payFinish.html" class="btn col-12 bg-primary" id="buyButton">確認購買</a>
+            <a href="payFinish.html" class="btn col-12 bg-primary text-white" id="buyButton">確認購買</a>
 <!-- 失敗則不跳轉網頁 -->
         </div>
     </main>
@@ -53,7 +53,6 @@
     
     <script>
         const orderSummary = JSON.parse(localStorage.getItem('orderSummary'));
-        console.log(orderSummary.total.toFixed(2))
 
         const googlePaymentDataRequest = {
             environment: 'TEST',
@@ -205,7 +204,8 @@
             // document.getElementById('checkout')
             //     .insertAdjacentElement('afterend', formattedResponse);
             console.log("success")
-            window.location.href="payFinish.html"
+            alert("付款失敗")
+window.location.href="payFinish.html"
         }
         
         /**
@@ -222,6 +222,7 @@
             // p.appendChild(errorDisplay);
             // document.getElementById('checkout').insertAdjacentElement('afterend', p);
             console.log("fail")
+            alert("付款失敗")
         }
         document.addEventListener('DOMContentLoaded', () => {
 

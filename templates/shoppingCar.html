@@ -24,7 +24,7 @@
     </style>
 </head>
 <body>
-    <header></header>
+    <header id="navbar"></header>
     <main class="container-fluid mt-5 mb-5 pt-5 pb-5" style="min-height: 80vh;">
         <div class="container-sm text-center mt-5 mb-5">
             <a href="store.html">繼續購物</a>
@@ -98,7 +98,7 @@
 
         // 从JSON文件获取产品数据并缓存
         function fetchProductsData() {
-            return fetch(`../json/data.json`)
+            return fetch(`../json/ProductInformationSheet.json`)
                 .then(response => response.json())
                 .then(data => {
                     productsDataCache = data.products;

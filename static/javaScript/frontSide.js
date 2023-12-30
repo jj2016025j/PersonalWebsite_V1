@@ -1,4 +1,4 @@
-import { sendMessage } from './openai.js';
+import { sendMessage } from 'openai.js';
 //frontSide.js
 function createUI() {
     createHeader()
@@ -8,14 +8,15 @@ function createUI() {
 //addEventListener 這個不知道該放哪裡
 function initializeEventListeners() {
     //幫產品加上送出資料的功能
-    const hotProductList = document.getElementById('hot-product-display');
-    const allProductList = document.getElementById('all-product-display');
+    const hotProductList = document.getElementById('hot-product-list');
+    const allProductList = document.getElementById('all-product-list');
     const productList = [hotProductList, allProductList];
+
     productList.forEach(element => {
+
         element?.addEventListener('click', (event) => {
             const link = event.target.closest('.product-name');
             if (!link) return; // 如果点击的不是产品链接，退出
-
             event.preventDefault(); // 阻止链接的默认跳转行为
             const productName = link.textContent; // 获取产品名称
             const product = { name: productName }; // 创建一个包含产品信息的对象
@@ -23,9 +24,6 @@ function initializeEventListeners() {
             window.location.href = 'productInfo.html'; // 跳转到产品信息页面
         });
     })
-
-    //更新用戶介面
-    updateUserInfo()
 
     //登出
     document.getElementById('logout')?.addEventListener('click', function () {
@@ -38,7 +36,6 @@ function initializeEventListeners() {
         event.preventDefault();
         sendMessage(true);
     });
-
 }
 
 //============================================更新區
@@ -74,19 +71,19 @@ function generateHtmlContent(type, item) {
     switch (type) {
         case 'product':
             return `
-                <div class="product-card d-flex flex-column">
+                <div class="product-card d-flex flex-column justify-content-center shadow rounded-lg ps-0 pe-0 overflow-hidden" style="min-width: 200px;">
                     <div class="img" style="background-image: url(${item.image});"></div>
-                    <a class="product-name" href="./productInfo.html"><b>${item.name}</b></a>
-                    <a class="product-price">$${item.price}</a>
+                    <a class="col-11 product-name pt-1" href="#"><b>${item.name}</b></a>
+                    <a class="col-11 product-price">$${item.price}</a>
                 </div>
             `;
         case 'category':
             return `
-                <div class="classification-option category" id="category">${item}</div>
+                <div class="classification-option category shadow-sm" id="category">${item}</div>
             `;
         case 'sub-category':
             return `
-                <div class="classification-option sub-category" id="sub-category">${item}</div>
+                <div class="classification-option sub-category shadow-sm" id="sub-category">${item}</div>
             `;
         case 'userInfo':
             if (item) {
@@ -112,11 +109,12 @@ function createHeader() {
     const header = document.querySelector('header')
     if (header) {
         header.innerHTML = `
-        <h1 class="note-sans-black logo">魔法商店</h1>
+        <h1 class="note-sans-black logo">艾格魯的店</h1>
         <nav class="bg-opacity-50">
             <ul>
                 <li><a href=./index.html>HOME</a></li>
                 <li><a href=./store.html>STORE</a></li>
+                <li><a href=./tool.html>TOOL</a></li>
                 <li><a href=./about.html>ABOUT</a></li>
                 <li><a href=./portfolio.html>PORTFOLIO</a></li>
             </ul>  
@@ -136,8 +134,9 @@ function createHeader() {
 }
 
 function createFooter() {
-    const footer = document.getElementsByTagName('footer')[0]
-    if (footer) {
+    const footer = document.getElementsByTagName('footer')[0];
+    footer.classList.add("bg-black", "text-white");
+        if (footer) {
         footer.innerHTML = `
     <div class="d-flex row justify-content-around">
         <div class="col-md-5 d-flex justify-content-around mt-3" style="width: 50%">
@@ -152,10 +151,10 @@ function createFooter() {
             <a href="https://jj2016025j.github.io/WebPractice20230826/"><i class="bi bi-browser-chrome"></i></a>
         </div>
         <div class="col-md-5 d-flex justify-content-around text-center mt-3" style="width: 50%;">
-            <a href="https://genshin.hoyoverse.com/zh-tw/company/privacy" target="_blank"
+            <a href="https://www.canva.com/design/DAF4PrNLaIc/XBZqJm5EFzzmeLM4V6hkFQ/edit?ui=eyJHIjp7fX0" target="_blank"
             rel="noopener noreferrer">
                 隱私權政策</a>
-            <a href="https://genshin.hoyoverse.com/zh-tw/company/terms" target="_blank"
+            <a href="https://www.canva.com/design/DAF4PrNLaIc/XBZqJm5EFzzmeLM4V6hkFQ/edit?utm_content=DAF4PrNLaIc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank"
             rel="noopener noreferrer">
                 使用者協議</a>
             <a href="./about.html" target="_blank" rel="noopener noreferrer">
@@ -165,7 +164,7 @@ function createFooter() {
         </div>
     </div>
     <br>
-    <div class="row text-center">
+    <div class="row text-center justify-content-evenly">
         <div class="col-md-5">
             <p>
                 本網站所提供的所有產品與服務資訊，包括但不限於價格、描述、可用性及性能等，
@@ -195,10 +194,7 @@ function createFooter() {
                 republished, uploaded, posted, transmitted, or distributed in any form without explicit written permission.
             </p>
         </div>
-        <p>Copyright © 2023 建陞教練的工作室 All Rights Reserved.</p>
-        <a href="https://www.canva.com/design/DAF4PrNLaIc/XBZqJm5EFzzmeLM4V6hkFQ/edit?ui=eyJHIjp7fX0">簡報</a>
-        <a href="https://www.canva.com/design/DAF4PrNLaIc/XBZqJm5EFzzmeLM4V6hkFQ/edit?utm_content=DAF4PrNLaIc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">簡報</a>
-    
+        <a href="https://www.canva.com/design/DAF4PrNLaIc/XBZqJm5EFzzmeLM4V6hkFQ/edit?ui=eyJHIjp7fX0" class="mb-5">Copyright © 2023 建陞教練的工作室 All Rights Reserved.</a>
     </div>
     `;
     }
