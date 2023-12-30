@@ -104,6 +104,27 @@ function generateHtmlContent(type, item) {
     }
 }
 
+function showMessage(type, message) {
+    const messageContainer = document.getElementById('message-container');
+    const messageType = {
+        'success': '成功！',
+        'warning': '警告！',
+        'danger': '錯誤！',
+        'info': '提示！'
+    };
+
+    messageContainer.innerHTML = `<div class="alert alert-${type}"><strong>${messageType[type]}</strong> ${message}</div>`;
+
+    setTimeout(() => {
+        messageContainer.innerHTML = '';
+        if (type === 'success') {
+            setTimeout(() => {
+                window.location.href = 'portfolio.html';
+            }, 1000);
+        }
+    }, 2000);
+}
+
 //============================================生成區
 function createHeader() {
     const header = document.querySelector('header')
@@ -202,5 +223,5 @@ function createFooter() {
 
 export {
     createUI, createHeader, createFooter, updateUserInfo,
-    updateList, initializeEventListeners
+    updateList, initializeEventListeners, showMessage
 };
