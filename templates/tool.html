@@ -48,6 +48,15 @@
     <p>To redo the last undone action, use the kbd element:</p>
     <p>Use <kbd>Ctrl</kbd> + <kbd>Y</kbd> to redo the last undone action.</p>
 
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script type="text/javascript">
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: "https://leejohnson.ddns.net/templates/",
+            width: 128,
+            height: 128
+        });
+    </script>
+    
     <script type="module" src="../static/javaScript/main.js"></script>
     <!-- 引入Bootstrap JavaScript（可選） -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

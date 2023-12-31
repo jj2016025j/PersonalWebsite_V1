@@ -128,6 +128,7 @@ function showMessage(type, message) {
 //============================================生成區
 function createHeader() {
     const header = document.querySelector('header')
+    header.classList.add("bg-black", "text-white", "justify-content-center");
     if (header) {
         header.innerHTML = `
         <h1 class="note-sans-black logo">艾格魯的店</h1>
@@ -140,6 +141,12 @@ function createHeader() {
                 <li><a href=./portfolio.html>PORTFOLIO</a></li>
             </ul>  
         </nav>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Sony</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Tablet</a>
+          <a class="dropdown-item" href="#">Smartphone</a>
+        </div>
+
     `;
     }
     //導航欄特效
@@ -156,11 +163,11 @@ function createHeader() {
 
 function createFooter() {
     const footer = document.getElementsByTagName('footer')[0];
-    footer.classList.add("bg-black", "text-white");
-        if (footer) {
+    footer.classList.add("bg-black", "text-white", "justify-content-center");
+    if (footer) {
         footer.innerHTML = `
-    <div class="d-flex row justify-content-around">
-        <div class="col-md-5 d-flex justify-content-around mt-3" style="width: 50%">
+    <div class="col-12 row justify-content-center mx-auto">
+        <div class="col-md-6 col-12 d-flex justify-content-around mt-3">
             <a href="https://github.com/jj2016025j"><i class="bi bi-github"></i></a>
             <a href="https://www.facebook.com/lee871116/"><i class="bi bi-facebook" size="2x"></i></a>            
             <a href="https://www.instagram.com/lee_871116"><i class="bi bi-instagram"></i></a>           
@@ -169,9 +176,9 @@ function createFooter() {
             <a href="https://www.behance.net/d71ea9ce"><i class="bi bi-behance"></i></a>
             <a href="https://www.linkedin.com/in/%E5%BB%BA%E9%99%9E-%E6%9D%8E-3145931b2/"><i class="bi bi-linkedin"></i></a>
             <a href="linkfly.to/leecs871116"><i class="bi bi-link"></i></a>
-            <a href="https://jj2016025j.github.io/WebPractice20230826/"><i class="bi bi-browser-chrome"></i></a>
+            <a href="https://leejohnson.ddns.net/templates/"><i class="bi bi-browser-chrome"></i></a>
         </div>
-        <div class="col-md-5 d-flex justify-content-around text-center mt-3" style="width: 50%;">
+        <div class="col-md-6 col-12 d-flex justify-content-around text-center mt-3">
             <a href="https://www.canva.com/design/DAF4PrNLaIc/XBZqJm5EFzzmeLM4V6hkFQ/edit?ui=eyJHIjp7fX0" target="_blank"
             rel="noopener noreferrer">
                 隱私權政策</a>
@@ -185,7 +192,7 @@ function createFooter() {
         </div>
     </div>
     <br>
-    <div class="row text-center justify-content-evenly">
+    <div class="col-12 row text-center justify-content-center mx-auto">
         <div class="col-md-5">
             <p>
                 本網站所提供的所有產品與服務資訊，包括但不限於價格、描述、可用性及性能等，
@@ -201,7 +208,7 @@ function createFooter() {
                 The risk associated with the use of these products or services is entirely borne by the user.
             </p>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5 d-none d-sm-block">
             <p>
                 本網站中的所有內容，包括文字、圖形、標誌、按鈕圖標、圖像、音頻剪輯、數位下載、數據編輯和軟件，
                 均為網站擁有者或其內容提供者的財產，並受國際版權法的保護。本網站的所有內容僅用於信息和個人非商業用途，
