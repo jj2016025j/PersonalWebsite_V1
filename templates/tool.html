@@ -50,6 +50,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
     <script type="text/javascript">
+      if(!document.getElementById("qrcode"))
         var qrcode = new QRCode(document.getElementById("qrcode"), {
             text: "https://leejohnson.ddns.net/templates/",
             width: 128,

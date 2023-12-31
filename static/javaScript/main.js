@@ -29,9 +29,9 @@ async function Initialization() {
     try {
         // 使用 async/await 等待所有 fetch 请求完成
         const [ProductInfo2, ProductInfo3, ProductInfo4] = await Promise.all([
-            fetchJson('../json/ProductInformationSheet.json'),
-            fetchJson('../json/ProductClassificationTable.json'),
-            fetchJson('../json/salesRecord.json')
+            fetchJson('../static/json/ProductInformationSheet.json'),
+            fetchJson('../static/json/ProductClassificationTable.json'),
+            fetchJson('../static/json/salesRecord.json')
         ]);
 
         ProductInfo = ProductInfo2;

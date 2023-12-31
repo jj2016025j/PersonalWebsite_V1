@@ -119,7 +119,7 @@ async function fetchJson(url) {
 }
 
 //test
-fetchJson('../json/ProductClassificationTable.json')
+fetchJson('../static/json/ProductClassificationTable.json')
     .then(jsonData => {
         // console.log(getCategoriesList(jsonData))
     }).catch(error => {

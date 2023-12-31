@@ -98,7 +98,7 @@
 
         // 从JSON文件获取产品数据并缓存
         function fetchProductsData() {
-            return fetch(`../json/ProductInformationSheet.json`)
+            return fetch(`../static/json/ProductInformationSheet.json`)
                 .then(response => response.json())
                 .then(data => {
                     productsDataCache = data.products;

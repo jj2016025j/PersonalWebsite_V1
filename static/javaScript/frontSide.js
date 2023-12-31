@@ -5,6 +5,15 @@ function createUI() {
     createFooter()
 }
 
+const config = {
+    model: "local-model",
+    messages: [
+        {"role": "system", "content": "你是一個主要說繁體中文的語音助理"},
+        {"role": "user", "content": "介紹你自己"}
+    ],
+    temperature: 1
+};
+
 //addEventListener 這個不知道該放哪裡
 function initializeEventListeners() {
     //幫產品加上送出資料的功能
@@ -128,7 +137,7 @@ function showMessage(type, message) {
 //============================================生成區
 function createHeader() {
     const header = document.querySelector('header')
-    header.classList.add("bg-black", "text-white", "justify-content-center");
+    header?.classList.add("bg-black", "text-white", "justify-content-center");
     if (header) {
         header.innerHTML = `
         <h1 class="note-sans-black logo">艾格魯的店</h1>
@@ -163,7 +172,7 @@ function createHeader() {
 
 function createFooter() {
     const footer = document.getElementsByTagName('footer')[0];
-    footer.classList.add("bg-black", "text-white", "justify-content-center");
+    footer?.classList.add("bg-black", "text-white", "justify-content-center");
     if (footer) {
         footer.innerHTML = `
     <div class="col-12 row justify-content-center mx-auto">

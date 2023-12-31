@@ -81,7 +81,7 @@
 
         //===============加载产品详情，使用缓存数据=================
         function loadProductDetails(product) {
-            getCachedJsonData('../json/ProductInformationSheet.json')
+            getCachedJsonData('../static/json/ProductInformationSheet.json')
                 .then(data => {
                     const foundProduct = data.products.find(p => p.name === product.name);
                     foundProduct ? updateProductPage(foundProduct) : console.log("找不到商品，重定向到404");
@@ -154,7 +154,7 @@
         }
 
         function updateOrderSummary() {
-            getCachedJsonData('../json/data.json')
+            getCachedJsonData('../static/json/data.json')
                 .then(data => {
                     let productsData = data.products;
                     let shoppingCartList = JSON.parse(localStorage.getItem('shoppingCartList')) || [];
