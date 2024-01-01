@@ -127,4 +127,5 @@ dist
 .pnp.*
 
 #api key
+config.json
 static/json/config.json
