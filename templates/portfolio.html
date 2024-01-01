@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../static/css/global.css">
 </head>
 
-<body class="text-white bg-black">
+<body class="bg-white">
     <!-- 導航欄 -->
     <header id="navbar">
     </header>
@@ -38,6 +38,13 @@
             <form id="chatForm" class="form-inline">
                 <input type="text" id="input" class="form-control mr-2" style="width: 90%;" placeholder="請輸入訊息..."
                     autocomplete="off">
+
+                <!-- 下拉菜单选择发送对象 -->
+                <select id="recipient" class="form-control mr-2">
+                    <option value="local">本地端LLM</option>
+                    <option value="chatgpt">ChatGPT</option>
+                </select>
+
                 <button type="submit" class="btn btn-primary">發送</button>
             </form>
         </div>

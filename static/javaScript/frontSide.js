@@ -1,4 +1,4 @@
-import { sendMessage } from './openai.js';
+import { fetchConfigAndSendMessage, fetchChatCompletion } from './openai.js';
 //frontSide.js
 function createUI() {
     createHeader()
@@ -8,8 +8,8 @@ function createUI() {
 const config = {
     model: "local-model",
     messages: [
-        {"role": "system", "content": "你是一個主要說繁體中文的語音助理"},
-        {"role": "user", "content": "介紹你自己"}
+        { "role": "system", "content": "你是一個主要說繁體中文的語音助理" },
+        { "role": "user", "content": "介紹你自己" }
     ],
     temperature: 1
 };
@@ -40,10 +40,27 @@ function initializeEventListeners() {
         updateUserInfo()
     })
 
-    //發送
-    document.getElementById('chatForm')?.addEventListener('submit', function (event) {
+    document.getElementById('chatForm').addEventListener('submit', function (event) {
         event.preventDefault();
-        sendMessage(true);
+
+        const inputField = document.getElementById('input');
+        const recipientSelect = document.getElementById('recipient');
+        const message = inputField.value.trim();
+        const recipient = recipientSelect.value;
+
+        inputField.value = ''; // 清空输入框
+
+        if (message) { // 确保消息不为空
+            document.getElementById('chatbox').innerHTML += `<div>訪客: ${message}</div>`;
+
+            if (recipient === 'chatgpt') {
+                console.log('发送到 ChatGPT');
+                fetchConfigAndSendMessage();
+            } else {
+                console.log('发送到本地端 LLM');
+                fetchChatCompletion();
+            }
+        }
     });
 }
 
