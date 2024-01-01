@@ -40,7 +40,7 @@ function initializeEventListeners() {
         updateUserInfo()
     })
 
-    document.getElementById('chatForm').addEventListener('submit', function (event) {
+    document.getElementById('chatForm')?.addEventListener('submit', function (event) {
         event.preventDefault();
 
         const inputField = document.getElementById('input');
@@ -55,10 +55,10 @@ function initializeEventListeners() {
 
             if (recipient === 'chatgpt') {
                 console.log('发送到 ChatGPT');
-                fetchConfigAndSendMessage();
+                fetchConfigAndSendMessage(message);
             } else {
                 console.log('发送到本地端 LLM');
-                fetchChatCompletion();
+                fetchChatCompletion(message);
             }
         }
     });
@@ -97,7 +97,7 @@ function generateHtmlContent(type, item) {
     switch (type) {
         case 'product':
             return `
-                <div class="product-card d-flex flex-column justify-content-center shadow rounded-lg ps-0 pe-0 overflow-hidden" style="min-width: 200px;">
+                <div class="col-sm-6 product-card d-flex flex-column justify-content-center shadow rounded-lg ps-0 pe-0 overflow-hidden" style="min-width: 200px;">
                     <div class="img" style="background-image: url(${item.image});"></div>
                     <a class="col-11 product-name pt-1" href="#"><b>${item.name}</b></a>
                     <a class="col-11 product-price">$${item.price}</a>
@@ -154,35 +154,60 @@ function showMessage(type, message) {
 //============================================生成區
 function createHeader() {
     const header = document.querySelector('header')
-    header?.classList.add("bg-black", "text-white", "justify-content-center");
     if (header) {
+        if (header.classList.contains('dark'))
+            header.classList.add("navbar-dark", "row", "justify-content-center", "g-0");
+        else
+            header.classList.add("row", "justify-content-center", "g-0");
         header.innerHTML = `
-        <h1 class="note-sans-black logo">艾格魯的店</h1>
-        <nav class="bg-opacity-50">
-            <ul>
-                <li><a href=./index.html>HOME</a></li>
-                <li><a href=./store.html>STORE</a></li>
-                <li><a href=./tool.html>TOOL</a></li>
-                <li><a href=./about.html>ABOUT</a></li>
-                <li><a href=./portfolio.html>PORTFOLIO</a></li>
-            </ul>  
-        </nav>
-        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Sony</button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Tablet</a>
-          <a class="dropdown-item" href="#">Smartphone</a>
-        </div>
-
-    `;
+            <nav class="navbar navbar-expand-sm open-sans bg-opacity-50">
+                <div class="container-fluid mr-5 ml-5">
+                    <a class="navbar-brand" href="./index.html">
+                        <h1 class="note-sans-black text-center">艾格魯的店</h1>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="./index.html">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./store.html">STORE</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">TOOL</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="./gpt.html">GPT</a></li>
+                                    <li><a class="dropdown-item" href="#">API整合(敬請期待)</a></li>
+                                    <li><a class="dropdown-item" href="#">圖像辨識(敬請期待)</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./portfolio.html">PORTFOLIO</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./about.html">ABOUT</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        `;
     }
     //導航欄特效
     window.addEventListener('scroll', function () {
         var navbar = document.getElementById('navbar');
         if (!navbar) return
         if (window.pageYOffset > navbar.offsetTop) {
-            navbar.classList.add('sticky');
+            navbar.classList.add('sticky', "navbar-dark");
         } else {
-            navbar.classList.remove('sticky');
+            if (header.classList.contains('dark')) {
+                navbar.classList.remove('sticky');
+                return
+            }
+            navbar.classList.remove('sticky', "navbar-dark");
         }
     });
 }

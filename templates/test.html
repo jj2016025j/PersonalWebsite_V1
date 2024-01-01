@@ -6,93 +6,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>test</title>
   <!-- 引入Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
-  <h1 class="note-sans-black logo">艾格魯的店</h1>
-  <nav class="bg-opacity-50">
-      <ul>
-          <li><a href=./index.html>HOME</a></li>
-          <li><a href=./store.html>STORE</a></li>
-          <li><a href=./tool.html>TOOL</a></li>
-          <li><a href=./about.html>ABOUT</a></li>
-          <li><a href=./portfolio.html>PORTFOLIO</a></li>
-      </ul>
-  </nav>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Sony</button>
-  <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Tablet</a>
-      <a class="dropdown-item" href="#">Smartphone</a>
-  </div>
-  <button id="getAIResponse">获取 AI 响应</button>
-  <div id="aiResponse"></div>
-
-  <script>
-      document.getElementById('getAIResponse').addEventListener('click', function() {
-          const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // 代理 URL
-          const targetUrl = 'http://localhost:1234/v1/chat/completions'; // OpenAI API URL
-
-          fetch(proxyUrl + targetUrl, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': 'Bearer not-needed' // 使用实际的 API 密钥
-              },
-              body: JSON.stringify({
-                  model: "local-model",
-                  messages: [
-                      {"role": "system", "content": "你是一個主要說繁體中文的語音助理"},
-                      {"role": "user", "content": "跟我講一些關於llm的基礎知識"}
-                  ],
-                  temperature: 1,
-                  max_tokens: 100
-              })
-          })
-          .then(response => response.json())
-          .then(data => {
-              document.getElementById('aiResponse').innerText = data.choices[0].message.content;
-          })
-          .catch(error => console.error('Error:', error));
-      });
-  </script>
-  <!-- 导航栏 -->
-  <nav class="navbar navbar-expand-sm bg-opacity-50">
-      <!-- 折叠按钮 -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-sm open-sans bg-opacity-50">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html">
+        <h1 class="note-sans-black logo text-center">艾格魯的店</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
       </button>
-
-      <!-- 折叠内容 -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-              <li class="nav-item"><a class="nav-link" href="./index.html">HOME</a></li>
-              <li class="nav-item"><a class="nav-link" href="./store.html">STORE</a></li>
-              <li class="nav-item"><a class="nav-link" href="./tool.html">TOOL</a></li>
-              <li class="nav-item"><a class="nav-link" href="./about.html">ABOUT</a></li>
-              <li class="nav-item"><a class="nav-link" href="./portfolio.html">PORTFOLIO</a></li>
-          </ul>
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./store.html">STORE</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./portfolio.html">PORTFOLIO</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">ABOUT</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">TOOL</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="./gpt.html">GPT</a></li>
+              <li><a class="dropdown-item" href="#">API整合(敬請期待)</a></li>
+              <li><a class="dropdown-item" href="#">圖像辨識(敬請期待)</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
+    </div>
   </nav>
-
-  <!-- 下拉菜单 -->
-  <div class="dropdown d-sm-none">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Menu</button>
-      <div class="dropdown-menu">
-          <a class="dropdown-item" href="./index.html">HOME</a>
-          <a class="dropdown-item" href="./store.html">STORE</a>
-          <a class="dropdown-item" href="./tool.html">TOOL</a>
-          <a class="dropdown-item" href="./about.html">ABOUT</a>
-          <a class="dropdown-item" href="./portfolio.html">PORTFOLIO</a>
-      </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-
 
   <!-- <script src="https://accounts.google.com/gsi/client" async></script>
   <div id="g_id_onload"

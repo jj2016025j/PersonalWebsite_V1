@@ -50,13 +50,13 @@ async function fetchChatCompletion(message = "說一段英文跟一段中文的�
         document.getElementById('chatbox').innerHTML += `<div id="newChat">GPT: </div>`;
 
         let chatbox = document.getElementById('newChat');
+        chatbox.id = "chat"
         let accumulatedChunks = '';
-        let text = '';
+        let text = 'GPT: ';
 
         while (true) {
             const { done, value } = await reader.read();
             if (done) {
-                // chatbox.innerHTML = `<div>GPT: ${text}</div>`
                 break;
             }
 
@@ -74,9 +74,8 @@ async function fetchChatCompletion(message = "說一段英文跟一段中文的�
                 const gptResponse = jsonData.choices[0].delta.content;
 
                 text += gptResponse;
-                console.log(text); // 打印接收到的数据块
-                chatbox.innerHTML = `<div>GPT:<p> ${text}</p></div>`
-
+                // console.log(text); // 打印接收到的数据块
+                chatbox.innerText = text
 
                 // 处理 jsonData
                 accumulatedChunks = ''; // 重置累积的数据块
@@ -91,12 +90,12 @@ async function fetchChatCompletion(message = "說一段英文跟一段中文的�
 }
 
 //讀取密鑰後訪問gpt
-function fetchConfigAndSendMessage() {
+function fetchConfigAndSendMessage(message) {
     fetch('../static/json/config.json')
         .then(response => response.json())
         .then(Data => {
             const OPENAI_API_KEY = Data.OPENAI_API.OPENAI_API_KEY;
-            queryOpenAI(OPENAI_API_KEY)
+            queryOpenAI(OPENAI_API_KEY, message)
         })
         .catch(error => {
             console.error('Error fetching config JSON:', error);
@@ -104,7 +103,7 @@ function fetchConfigAndSendMessage() {
         });
 }
 
-async function queryOpenAI(OPENAI_API_KEY) {
+async function queryOpenAI(OPENAI_API_KEY, message) {
     const url = 'https://api.openai.com/v1/chat/completions';
 
     const data = {
@@ -116,7 +115,7 @@ async function queryOpenAI(OPENAI_API_KEY) {
             },
             {
                 "role": "user",
-                "content": "Who won the world series in 2020?"
+                "content": message
             }
         ],
         max_tokens: 10,
