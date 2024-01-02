@@ -273,7 +273,7 @@ function createFooter() {
                 republished, uploaded, posted, transmitted, or distributed in any form without explicit written permission.
             </p>
         </div>
-        <a href="https://www.canva.com/design/DAF4PrNLaIc/XBZqJm5EFzzmeLM4V6hkFQ/edit?ui=eyJHIjp7fX0" class="mb-5">Copyright © 2023 建陞教練的工作室 All Rights Reserved.</a>
+        <a href="https://www.canva.com/design/DAF4PrNLaIc/XBZqJm5EFzzmeLM4V6hkFQ/edit?utm_content=DAF4PrNLaIc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="mb-5">Copyright © 2023 建陞教練的工作室 All Rights Reserved.</a>
     </div>
     `;
     }
