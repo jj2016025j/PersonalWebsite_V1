@@ -123,6 +123,12 @@ function generateHtmlContent(type, item) {
                 return `
                     <h3 class="mt-5">尚未登入</h3>
                     <a href="login.html" class="mt-2 mb-5 btn btn-primary">去登入</a>
+                    <div class=" mt-3" id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                        data-login_uri="https://your.domain/your_login_endpoint" data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"
+                        data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
+                    </div>
                 `;
             }
         default:
@@ -180,8 +186,10 @@ function createHeader() {
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">TOOL</a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="./gpt.html">GPT</a></li>
-                                    <li><a class="dropdown-item" href="#">API整合(敬請期待)</a></li>
-                                    <li><a class="dropdown-item" href="#">圖像辨識(敬請期待)</a></li>
+                                    <li><a class="dropdown-item" href="#">API整合(尚未開放)</a></li>
+                                    <li><a class="dropdown-item" href="#">圖像辨識(尚未開放)</a></li>
+                                    <li><a class="dropdown-item" href="#">討論空間(尚未開放)</a></li>
+                                    <li><a class="dropdown-item" href="#">其他開發中頁面</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
