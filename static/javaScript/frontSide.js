@@ -45,6 +45,7 @@ function initializeEventListeners() {
 
         const inputField = document.getElementById('input');
         const recipientSelect = document.getElementById('recipient');
+        const API_KEY = document.getElementById('api-key').value;
         const message = inputField.value.trim();
         const recipient = recipientSelect.value;
 
@@ -55,7 +56,7 @@ function initializeEventListeners() {
 
             if (recipient === 'chatgpt') {
                 console.log('发送到 ChatGPT');
-                fetchConfigAndSendMessage(message);
+                fetchConfigAndSendMessage(API_KEY, message);
             } else {
                 console.log('发送到本地端 LLM');
                 fetchChatCompletion(message);

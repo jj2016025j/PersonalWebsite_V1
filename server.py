@@ -15,6 +15,10 @@ CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5050"}})# 这将�
 def home():
     return render_template('index.html')
 
+@app.route('/index.html')
+def index():
+    return render_template('index.html')
+
 @app.route('/about.html')
 def about():
     return render_template('about.html')
@@ -23,7 +27,7 @@ def about():
 def login():
     return render_template('login.html')
 
-@app.route('/pay-finish.html')
+@app.route('/payFinish.html')
 def pay_finish():
     return render_template('payFinish.html')
 
@@ -31,15 +35,15 @@ def pay_finish():
 def portfolio():
     return render_template('portfolio.html')
 
-@app.route('/product-info.html')
+@app.route('/productInfo.html')
 def product_info():
     return render_template('productInfo.html')
 
-@app.route('/shopping-car.html')
+@app.route('/shoppingCar.html')
 def shopping_car():
     return render_template('shoppingCar.html')
 
-@app.route('/shopping-car-pay.html')
+@app.route('/shoppingCarPay.html')
 def shopping_car_pay():
     return render_template('shoppingCarPay.html')
 
@@ -58,6 +62,10 @@ def test():
 @app.route('/tool.html')
 def tool():
     return render_template('tool.html')
+
+@app.route('/gpt.html')
+def gpt():
+    return render_template('gpt.html')
 
 @app.errorhandler(404)
 def not_found_error(error):

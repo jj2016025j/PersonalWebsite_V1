@@ -20,7 +20,7 @@
 //     systemPrompt: "你是一个高级的聊天机器人。"
 // } = config;
 
-async function fetchChatCompletion(message = "說一段英文跟一段中文的自我介紹") {
+async function fetchChatCompletion( message = "說一段英文跟一段中文的自我介紹") {
     const url = 'http://localhost:1234/v1/chat/completions';
     const data = {
         messages: [
@@ -90,7 +90,12 @@ async function fetchChatCompletion(message = "說一段英文跟一段中文的�
 }
 
 //讀取密鑰後訪問gpt
-function fetchConfigAndSendMessage(message) {
+function fetchConfigAndSendMessage(API_KEY, message) {
+    if(API_KEY){
+        API_KEY = API_KEY.trim();
+        queryOpenAI(API_KEY, message)
+        return
+    }
     fetch('../static/json/config.json')
         .then(response => response.json())
         .then(Data => {
