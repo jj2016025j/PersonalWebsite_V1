@@ -1,5 +1,6 @@
-from flask import Flask, render_template  # 导入 render_template
+from flask import Flask, render_template, jsonify, request  # 导入 render_template
 from flask_cors import CORS
+import pymysql
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5050"}})# 这将允许所有来源的跨域请求
@@ -74,6 +75,74 @@ def not_found_error(error):
 @app.errorhandler(405)
 def method_not_allowed_error(error):
     return render_template('405.html'), 405
+
+# 假設已經設置了數據庫連接
+connection = pymysql.connect("localhost", "user", "password", "database")
+
+
+@app.route('/api/create_database', methods=['GET'])
+def get_data():
+    cursor = connection.cursor()
+    cursor.execute("CREATE DATABASE mydb;")
+    connection.commit()   
+     
+    data = cursor.fetchall()
+    
+    # 確保關閉數據庫連接
+    cursor.close()
+    connection.close()
+
+    return jsonify(data)
+
+@app.route('/api/insertdata', methods=['GET'])
+def get_data():
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO users (name, email) VALUES (%s, %s)", ("John Doe", "john@example.com"))
+    connection.commit()   
+     
+    data = cursor.fetchall()
+    
+    # 確保關閉數據庫連接
+    cursor.close()
+    connection.close()
+
+    return jsonify(data)
+
+@app.route('/api/select_articles', methods=['GET'])
+def get_articles():
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM `articles` WHERE 1")
+    data = cursor.fetchall()
+    
+    # 確保關閉數據庫連接
+    cursor.close()
+    connection.close()
+
+    return jsonify(data)
+
+@app.route('/api/select_projects', methods=['GET'])
+def get_projects():
+    # 添加從數據庫取得專案數據的邏輯
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM projects")
+
+    rows = cursor.fetchall()
+
+    for row in rows:
+        print(row)
+    pass
+
+@app.route('/api/create_new_table', methods=['GET'])
+def create_new_table():
+    cursor = connection.cursor()
+    cursor.execute("CREATE TABLE users (id INTEGER PRIMARY KEY, name VARCHAR(255), email VARCHAR(255));")
+    data = cursor.fetchall()
+    
+    # 確保關閉數據庫連接
+    cursor.close()
+    connection.close()
+
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(debug=True,port=5050)
