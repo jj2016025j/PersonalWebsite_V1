@@ -2,9 +2,13 @@ html,
 body {
     margin: 0;
     padding: 0;
+    background-color: #F8F4F0;
     /* position: absolute; */
-    border: 1px solid orange;
+}
 
+* {
+    border: 1px solid orange;
+    color: #1D1E22;
 }
 
 body {
@@ -18,22 +22,42 @@ body {
 header {
     position: sticky;
     display: flex;
-    width: 100%;
-    height: 5vh;
-    background-color: rgb(240, 245, 245);
+    width: 100vh;
+    height: 10vh;
+    background-color: rgb(255, 255, 255);
+
+    padding: 20px 150px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 50px;
 }
 
 .display {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-content: center;
     align-items: center;
     align-self: stretch;
+    position: relative;
 }
+
+/* padding: 300px; */
 
 .theme {
     width: 100%;
     height: 40vh;
+
+    background-image: url(./img/123.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center"
+
 }
 
 .slogan {
@@ -47,16 +71,6 @@ header {
     align-items: flex-start;
 }
 
-.block {
-    display: flex;
-    height: 757px;
-    /* padding: 300px; */
-    position: relative;
-    flex-direction: column;
-    align-items: flex-start;
-    align-self: stretch;
-    /* align-items: center; */
-}
 
 .content-block {
     display: flex;
@@ -73,180 +87,76 @@ footer {
     display: flex;
     width: 100%;
     height: 20vh;
-    background-color: rgb(175, 157, 253);
+    background-color: rgb(62, 109, 68);
 }
 
-.slogan-title {
-    color: #000;
-    text-align: center;
-    font-family: "Anek Malayalam";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 100%;
-    /* 20px */
-    letter-spacing: 2.6px;
+.gap-3 {
+    gap: 30px;
 }
 
-.slogan-content {
-    color: #717171;
-    text-align: center;
-    font-family: "Anek Malayalam";
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 100;
-    line-height: 200%;
-    /* 26px */
-    letter-spacing: 1.69px;
+.width-3 {
+    width: 300px;
 }
 
-.theme-title {
-    color: #E6C8AC;
-    font-family: "Noto Serif TC";
-    font-size: 64px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%;
-    /* 64px */
-    letter-spacing: 8.32px;
+.width-4 {
+    width: 464px;
 }
 
-h1 {
-    color: #E6C8AC;
-    font-family: "Playfair Display";
-    font-size: 128px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 100%;
-    /* 128px */
+.width-7 {
+    width: 700px;
 }
 
-h2 {
-    color: #F4CDAA;
-    font-family: "Noto Serif TC";
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 150%;
-    /* 72px */
+.height-8 {
+    height: 800px;
 }
 
-h2 {
-    color: #E6C8AC;
-    font-family: "Noto Serif TC";
-    font-size: 64px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%;
-    /* 64px */
-    letter-spacing: 8.32px;
+/* 設置元素為彈性容器，並且子元素沿水平方向排列 */
+.flex {
+    display: flex;
+    flex-direction: row; /* 子元素水平排列 */
 }
 
-h3 {}
-
-.news h3 {
-    color: #F4CDAA;
-    font-family: "Noto Serif TC";
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 150%;
-    /* 48px */
+/* 將彈性容器中的子元素對齊到容器的開始位置（頂部） */
+.align-start {
+    align-items: flex-start;
 }
 
-h4 {
-    color: #E6C8AC;
-    font-family: "Noto Serif TC";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%;
-    /* 20px */
-    letter-spacing: 2.6px;
+/* 將彈性容器中的子元素對齊到容器的結束位置（底部） */
+.align-end {
+    align-items: flex-end;
 }
 
-h5 {
-    color: #626262;
-    font-family: "Microsoft Sans Serif";
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 200%;
-    /* 26px */
-    letter-spacing: 1.69px;
-
+/* 設置多行彈性容器中的行在容器中沿交叉軸的開始位置對齊 */
+.content-start {
+    align-content: flex-start;
 }
 
-p {
-    color: #939393;
-    font-family: "Microsoft Sans Serif";
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 200%;
-    /* 26px */
-    letter-spacing: 1.69px;
+/* 設置彈性項目自己在交叉軸上的對齊方式為拉伸以填滿容器 */
+.self-stretch {
+    align-self: stretch;
 }
 
-.time {
-    color: #F4CDAA;
-    font-family: "Microsoft Sans Serif";
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-    /* 19.5px */
+/* 設置彈性容器的主軸方向為垂直 */
+.column {
+    flex-direction: column;
 }
 
-.invite {
-    color: #FFF;
-    font-family: "Microsoft Sans Serif";
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-    /* 19.5px */
+/* 將彈性容器中的子元素對齊到容器的中心位置 */
+.align-center {
+    align-items: center;
 }
 
-.feedback-name {
-    color: #000;
-    font-family: "Microsoft Sans Serif";
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 200%;
-    /* 26px */
-    letter-spacing: 1.69px;
+/* 將彈性容器中的子元素在主軸上均勻分布，並在項目之間留有空間 */
+.justify-between {
+    justify-content: space-between;
 }
 
-.feedback-content {
-    color: #757575;
-    font-family: "Microsoft Sans Serif";
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 200%;
-    /* 26px */
-    letter-spacing: 1.69px;
+/* 將彈性容器中的子元素在主軸上均勻分布，並在項目周圍留有空間 */
+.justify-around {
+    justify-content: space-around;
 }
 
-.footer-title {
-    color: #DDC0A5;
-    font-family: "Anek Malayalam";
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-    /* 38.4px */
-}
-
-.footer-content {
-    color: #282828;
-    font-family: "Microsoft Sans Serif";
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 200%;
-    /* 26px */
-    letter-spacing: 1.69px;
+/* 將彈性容器中的子元素在主軸上居中對齊 */
+.justify-center {
+    justify-content: center;
 }
