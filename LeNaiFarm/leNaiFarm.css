@@ -4,9 +4,12 @@ body {
     padding: 0;
     background-color: #F8F4F0;
     /* position: absolute; */
+    width: 1920px;
 }
 
 * {
+    margin: 0;
+    padding: 0;
     border: 1px solid orange;
     color: #1D1E22;
 }
@@ -31,20 +34,12 @@ header {
     align-items: center;
 }
 
-nav {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.display {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    align-self: stretch;
-    position: relative;
+img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    max-width: 700px;
+    position: absolute;
 }
 
 /* padding: 300px; */
@@ -52,12 +47,7 @@ nav {
 .theme {
     width: 100%;
     height: 40vh;
-
-    background-image: url(./img/123.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center"
-
+    background-image: url(./img/bgl1.jpg);
 }
 
 .slogan {
@@ -90,73 +80,315 @@ footer {
     background-color: rgb(62, 109, 68);
 }
 
-.gap-3 {
+.g-1 {
+    gap: 10px;
+}
+
+.g-3 {
     gap: 30px;
 }
 
-.width-3 {
+.g-5 {
+    gap: 50px;
+}
+
+.w-3 {
     width: 300px;
 }
 
-.width-4 {
+.w-4 {
     width: 464px;
 }
 
-.width-7 {
+.w-5 {
+    width: 500px;
+}
+
+.w-7 {
     width: 700px;
 }
 
-.height-8 {
+.h-3 {
+    height: 300px;
+}
+
+.h-8 {
     height: 800px;
 }
 
-/* 設置元素為彈性容器，並且子元素沿水平方向排列 */
+.h-10 {
+    height: 1000px;
+}
+
+.h-20 {
+    height: 2000px;
+}
+
+.m-5 {
+    margin: 50px;
+}
+
+.p-5 {
+    padding: 50px;
+}
+
+.p-10 {
+    padding: 100px;
+}
+
 .flex {
     display: flex;
-    flex-direction: row; /* 子元素水平排列 */
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: relative;
 }
 
-/* 將彈性容器中的子元素對齊到容器的開始位置（頂部） */
-.align-start {
-    align-items: flex-start;
+.row {
+    flex-direction: row;
 }
 
-/* 將彈性容器中的子元素對齊到容器的結束位置（底部） */
-.align-end {
-    align-items: flex-end;
-}
-
-/* 設置多行彈性容器中的行在容器中沿交叉軸的開始位置對齊 */
-.content-start {
-    align-content: flex-start;
-}
-
-/* 設置彈性項目自己在交叉軸上的對齊方式為拉伸以填滿容器 */
-.self-stretch {
-    align-self: stretch;
-}
-
-/* 設置彈性容器的主軸方向為垂直 */
 .column {
     flex-direction: column;
 }
 
-/* 將彈性容器中的子元素對齊到容器的中心位置 */
+.align-start {
+    align-items: flex-start;
+}
+
 .align-center {
     align-items: center;
 }
 
-/* 將彈性容器中的子元素在主軸上均勻分布，並在項目之間留有空間 */
+.align-end {
+    align-items: flex-end;
+}
+
+.content-start {
+    align-content: flex-start;
+}
+
+.content-stretch {
+    align-content: stretch;
+}
+
+.content-between {
+    align-content: space-between;
+}
+
+.self-stretch {
+    align-self: stretch;
+}
+
 .justify-between {
     justify-content: space-between;
 }
 
-/* 將彈性容器中的子元素在主軸上均勻分布，並在項目周圍留有空間 */
+.justify-start {
+    justify-content: flex-start;
+}
+
 .justify-around {
     justify-content: space-around;
 }
 
-/* 將彈性容器中的子元素在主軸上居中對齊 */
 .justify-center {
     justify-content: center;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.flex-1-0-0 {
+    flex: 1 0 0;
+}
+
+.pos-absolute {
+    position: absolute;
+}
+
+.left-0 {
+    left: 0px;
+}
+
+.left-5 {
+    left: 50px;
+}
+
+.left-1 {
+    left: 100px;
+}
+
+.left-15 {
+    left: 150px;
+}
+
+.left-2 {
+    left: 200px;
+}
+
+.left-25 {
+    left: 250px;
+}
+
+.left-3 {
+    left: 300px;
+}
+
+.left-35 {
+    left: 350px;
+}
+
+.left-4 {
+    left: 400px;
+}
+
+.left-45 {
+    left: 450px;
+}
+
+.left-5 {
+    left: 500px;
+}
+
+.left-6 {
+    left: 600px;
+}
+
+.left-7 {
+    left: 700px;
+}
+
+.left-8 {
+    left: 800px;
+}
+
+.left-9 {
+    left: 900px;
+}
+
+.left-10 {
+    left: 1000px;
+}
+
+.right-1 {
+    right: 100px;
+}
+
+.right-2 {
+    right: 200px;
+}
+
+.right-3 {
+    right: 300px;
+}
+
+.right-4 {
+    right: 400px;
+}
+
+.right-5 {
+    right: 500px;
+}
+
+.right-6 {
+    right: 600px;
+}
+
+.right-7 {
+    right: 700px;
+}
+
+.right-8 {
+    right: 800px;
+}
+
+.right-9 {
+    right: 900px;
+}
+
+.right-10 {
+    right: 1000px;
+}
+
+.top-1 {
+    top: 100px;
+}
+
+.top-2 {
+    top: 200px;
+}
+
+.top-3 {
+    top: 300px;
+}
+
+.top-4 {
+    top: 400px;
+}
+
+.top-5 {
+    top: 500px;
+}
+
+.top-6 {
+    top: 600px;
+}
+
+.top-7 {
+    top: 700px;
+}
+
+.top-8 {
+    top: 800px;
+}
+
+.top-9 {
+    top: 900px;
+}
+
+.top-10 {
+    top: 1000px;
+}
+
+.bottom-1 {
+    bottom: 100px;
+}
+
+.bottom-2 {
+    bottom: 200px;
+}
+
+.bottom-3 {
+    bottom: 300px;
+}
+
+.bottom-4 {
+    bottom: 400px;
+}
+
+.bottom-5 {
+    bottom: 500px;
+}
+
+.bottom-6 {
+    bottom: 600px;
+}
+
+.bottom-7 {
+    bottom: 700px;
+}
+
+.bottom-8 {
+    bottom: 800px;
+}
+
+.bottom-9 {
+    bottom: 900px;
+}
+
+.bottom-10 {
+    bottom: 1000px;
 }

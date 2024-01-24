@@ -81,6 +81,7 @@ h4 {
 }
 
 h5 {
+    margin: 0;
     font-family: "Noto Serif TC";
     font-size: 20px;
     font-style: normal;
@@ -91,6 +92,7 @@ h5 {
 }
 
 p {
+    margin: 0;
     color: #757575;
     font-family: "Microsoft Sans Serif";
     font-size: 13px;
@@ -129,6 +131,10 @@ p {
     color: #F4CDAA;
 }
 
+.bg-orange{
+    background-color: #F4CDAA;
+}
+
 .gray{
     color: #757575;
 }
@@ -138,6 +144,6 @@ p {
 }
 
 .white{
-    color: #1D1E22;
+    color: #ffffff;
     /* color: #ffffff; */
 }
