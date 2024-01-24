@@ -1,0 +1,162 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F8F4F0;
+    /* position: absolute; */
+}
+
+* {
+    border: 1px solid orange;
+    color: #1D1E22;
+}
+
+body {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    /* background: url("./assets/cement-bg.jpg"), lightgray 0% 0% / 100px 100px repeat; */
+}
+
+header {
+    position: sticky;
+    display: flex;
+    width: 100vh;
+    height: 10vh;
+    background-color: rgb(255, 255, 255);
+
+    padding: 20px 150px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    align-self: stretch;
+    position: relative;
+}
+
+/* padding: 300px; */
+
+.theme {
+    width: 100%;
+    height: 40vh;
+
+    background-image: url(./img/123.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center"
+
+}
+
+.slogan {
+    padding: 100px 0px;
+    gap: 10px;
+}
+
+.content {
+    height: 757px;
+    padding: 300px;
+    align-items: flex-start;
+}
+
+
+.content-block {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    position: absolute;
+    left: 379px;
+    bottom: 131.479px;
+}
+
+footer {
+    display: flex;
+    width: 100%;
+    height: 20vh;
+    background-color: rgb(62, 109, 68);
+}
+
+.gap-3 {
+    gap: 30px;
+}
+
+.width-3 {
+    width: 300px;
+}
+
+.width-4 {
+    width: 464px;
+}
+
+.width-7 {
+    width: 700px;
+}
+
+.height-8 {
+    height: 800px;
+}
+
+/* 設置元素為彈性容器，並且子元素沿水平方向排列 */
+.flex {
+    display: flex;
+    flex-direction: row; /* 子元素水平排列 */
+}
+
+/* 將彈性容器中的子元素對齊到容器的開始位置（頂部） */
+.align-start {
+    align-items: flex-start;
+}
+
+/* 將彈性容器中的子元素對齊到容器的結束位置（底部） */
+.align-end {
+    align-items: flex-end;
+}
+
+/* 設置多行彈性容器中的行在容器中沿交叉軸的開始位置對齊 */
+.content-start {
+    align-content: flex-start;
+}
+
+/* 設置彈性項目自己在交叉軸上的對齊方式為拉伸以填滿容器 */
+.self-stretch {
+    align-self: stretch;
+}
+
+/* 設置彈性容器的主軸方向為垂直 */
+.column {
+    flex-direction: column;
+}
+
+/* 將彈性容器中的子元素對齊到容器的中心位置 */
+.align-center {
+    align-items: center;
+}
+
+/* 將彈性容器中的子元素在主軸上均勻分布，並在項目之間留有空間 */
+.justify-between {
+    justify-content: space-between;
+}
+
+/* 將彈性容器中的子元素在主軸上均勻分布，並在項目周圍留有空間 */
+.justify-around {
+    justify-content: space-around;
+}
+
+/* 將彈性容器中的子元素在主軸上居中對齊 */
+.justify-center {
+    justify-content: center;
+}
