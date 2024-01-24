@@ -1,0 +1,186 @@
+$(function () {
+	$.fn.ryderWaypoint = function(option) {
+		return this.each(function() {
+			var $this = $(this);
+
+			var deFault = {
+				hook: 0.8,
+				check: 1,
+				enter: function() {}
+			};
+
+			var setting = $.extend(deFault, option);
+
+			function ryderScrolling() {
+				var scrollTop = $(window).scrollTop(),
+					elementOffset = $this.offset().top,
+					distance = (elementOffset - scrollTop),
+					windowHeight = $(window).height(),
+					breakPoint = windowHeight * setting.hook;
+
+				if (distance < breakPoint && setting.check) {
+					setting.check = 0;
+					setting.enter($this);
+				}
+			}
+
+			$(window).on("scroll", ryderScrolling).trigger("scroll");
+		});
+	};
+
+	$('.lazy').lazy({
+		effect: "fadeIn",
+		effectTime: 1000,
+	});
+
+	$(".hamburgerWrap").on("click", function (){
+		$(this).toggleClass("is-open")
+		$(".topmenuWrap").toggleClass("is-open")
+		$("[class|=topmenu-deco], .topmenu-bg").toggleClass("is-show")
+	})
+
+	$(window).on("resize", function (){
+		if ($(this).width() > 1024) {
+			window.device = 'desktop';
+		}else{
+			window.device = 'mobile';
+		}
+	}).trigger("resize")
+
+	window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+	window.cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
+
+	// banner wave svg
+	$(".m-banner").each(function (i) {
+
+		var ryder = new WaveSvg($(this));
+
+		$(this).data("svg", ryder);
+
+		$(this).ryderWaypoint({
+			hook: 1,
+			enter: function (el) {
+				el.addClass("is-show")
+				el.data("svg").start();
+			}
+		})
+	})
+
+	function easeOutQuad(t, b, c, d) {
+	    return -c *(t/=d)*(t-2) + b;
+	};
+
+	function WaveSvg(el) {
+
+		var $this = $(el);
+
+		var _w = $this.width();
+		var _h = $this.height();
+
+		var _id = 'wave-block' + Math.floor(Math.random() * 11111111);
+
+		$("<div class='wave-block'>").attr("id", _id).appendTo($this);
+
+		var draw = SVG(_id).size(_w, _h);
+
+		// var pattern = draw.pattern(1000, 1000, function(add) {
+		// 	add.rect(1000,1000).fill('#fff');
+		// 	add.image('images/body-bg.png');
+		// })
+
+		draw.fill('#f5f5f5');
+
+		var path = draw.path('M0 0 H1920 V1080 H0 V0');
+
+		var startTime = null;
+		var duration = 2500;
+		var _waveto = (device == 'desktop') ? 500 : 400;
+
+		function Loop(timestamp) {
+			var timestamp = timestamp || 0;
+
+			if(!startTime) startTime = timestamp;
+
+			var _curr = timestamp - startTime;
+
+			var s = "";
+
+			var freq = 0.007;
+			var amp = 30;
+
+			var step = easeOutQuad(_curr, 0, _waveto, duration);
+			var offset = easeOutQuad(_curr, 0, 10, duration);
+
+			for (var i = 0; i <= _w + 200; i += 30) {
+				s += i == 0 ? 'M ' : 'L ';
+				s += i + ',';
+				s += Math.sin(freq * i - offset) * amp + step + '';
+			}
+
+			s += "L " + _w + "," + _h;
+			s += "L 0," + _h;
+
+			path.plot(s)
+
+			if (_curr <= duration) {
+				requestAnimationFrame(Loop);
+			}else{
+			    cancelAnimationFrame(Loop);
+			}
+		}
+
+		this.start = function () {
+			new Loop();
+		}
+	}
+
+	// 尻一下上上下下左右左右AB
+	if (device == 'desktop') {
+		$(window).on("resize", function (){
+			location.reload();
+		})
+	}
+
+	if (device == 'mobile') {
+		$("body").wrapInner("<div id='mobileWrap'></div>");
+	}
+
+	// topmenu
+	window.topmenuGo = function(anchor) {
+		if ($("body").data("now") == 'index') {
+			$(".hamburgerWrap").removeClass("is-open")
+			$(".topmenuWrap").removeClass("is-open")
+			$("[class|=topmenu-deco], .topmenu-bg").removeClass("is-show")
+			$.scrollTo( anchor, {duration:1000} );
+		}else{
+			window.location = 'index.php' + anchor;
+		}
+	};
+
+	// mobile scroll
+	$(".topmenu-container").on("scroll", function (){
+		if ($(this).scrollTop() > 10) {
+			$(".mobile-scroll").addClass("is-hide")
+		}else{
+			$(".mobile-scroll").removeClass("is-hide")
+		}
+	})
+
+
+	
+	
+
+	if ($(this).width() > 1024) {
+		$(".uber").on("mouseenter", function () {
+			$(this).find("nav").fadeIn(300)
+		}).on("mouseleave", function () {
+			$(this).find("nav").fadeOut(300).stop(true).fadeOut(300)
+		})
+	}else{
+		$(".uber").on("click", function () {
+			$(this).find("nav").fadeToggle(300)
+		})
+	}
+
+
+})
