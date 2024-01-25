@@ -4,7 +4,12 @@ body {
     padding: 0;
     background-color: #F8F4F0;
     /* position: absolute; */
-    width: 1920px;
+    /* width: 1920px; */
+    width: 100%;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    overflow-x: hidden;
 }
 
 * {
